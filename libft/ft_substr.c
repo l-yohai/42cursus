@@ -6,14 +6,11 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:19:29 by yohlee            #+#    #+#             */
-/*   Updated: 2020/03/01 17:19:19 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/04/12 22:12:42 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
-
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 
 /*
 ** *s: string from which to create the substr.
@@ -30,6 +27,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
 	if (!(sub = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:20:56 by yohlee            #+#    #+#             */
-/*   Updated: 2020/03/01 23:16:23 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/04/12 23:37:00 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 ** with 'set' removed from beginnig and the end of str.
 */
 
-int		is_set(char const *set, char c)
+size_t	is_set(char const *set, char c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (set[i])
@@ -43,15 +43,17 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1)
 		return (NULL);
 	if (!set)
-		return ((char *)s1);
+		return (ft_strdup(s1));
 	i = 0;
 	while (is_set(set, s1[i]))
 		i++;
 	len = ft_strlen(s1);
-	while (is_set(set, s1[--len]))
-		;
-	if (!(str = (char *)malloc(sizeof(char) * (len - i + 2))))
+	if (i >= len)
+		return (ft_strdup(""));
+	while (is_set(set, s1[len - 1]))
+		len--;
+	if (!(str = (char *)malloc(sizeof(char) * (len - i + 1))))
 		return (NULL);
-	ft_strlcpy(str, s1 + i, len - i + 2);
+	ft_strlcpy(str, s1 + i, len - i + 1);
 	return (str);
 }

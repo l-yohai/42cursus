@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:21:49 by yohlee            #+#    #+#             */
-/*   Updated: 2020/03/02 01:48:37 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/04/15 23:46:10 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-
 /*
 ** libc_functions
 */
@@ -31,10 +30,10 @@ int					ft_atoi(const char *nptr);
 void				ft_bzero(void *b, size_t len);
 void				*ft_calloc(size_t nmemb, size_t size);
 int					ft_isalnum(int c);
-int 				ft_isalpha(int c);
+int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
-int					ft_isprint(char c);
+int					ft_isprint(int c);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t len);
 void				*ft_memchr(const void *b, int c, size_t len);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -47,7 +46,8 @@ size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t				ft_strlen(const char *s);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-char				*ft_strnstr(const char *big, const char *little, size_t len);
+char				*ft_strnstr(const char *big,\
+									const char *little, size_t len);
 char				*ft_strrchr(const char *s, int c);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
@@ -56,18 +56,14 @@ int					ft_toupper(int c);
 ** additional_functions
 */
 
-char				*sort_minus(char *str);
 char				*ft_itoa(int n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr_fd(char *s, int fd);
-int					count_words(char const *s, char c);
-int					get_words_len(char const *s, char c);
 char				**ft_split(char const *s, char c);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int					is_set(char const *set, char c);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 
@@ -83,15 +79,7 @@ void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-/*
-** sub_fuctions
-*/
-
-int					ft_nbrlen(long long n);
-char				*ft_rev_arr(char *str);
-char				*ft_strcat(char *s1, char const *s2);
-char				*ft_strcpy(char *s1, char const *s2);
+t_list				*ft_lstmap(t_list *lst,\
+									void *(*f)(void *), void (*del)(void *));
 
 #endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/28 14:21:01 by yohlee            #+#    #+#             */
-/*   Updated: 2020/03/01 17:01:07 by yohlee           ###   ########.fr       */
+/*   Created: 2020/04/15 15:40:24 by yohlee            #+#    #+#             */
+/*   Updated: 2020/04/15 15:40:32 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		count_words(char const *s, char c)
 {
-	int	i;
 	int	count;
+	int	i;
 
 	i = 0;
 	count = 0;
@@ -23,44 +23,53 @@ int		count_words(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		if (s[i] && s[i] != c)
+		if (s[i] != c && s[i])
 			count++;
-		while (s[i] && s[i] != c)
+		while (s[i] != c && s[i])
 			i++;
 	}
 	return (count);
 }
 
-int		get_words_len(char const *s, char c)
+char	*init_str(char const *s, char c)
 {
-	int	i;
+	int		i;
+	char	*ptr;
 
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
-	return (i);
+	if (!(ptr = (char *)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	ft_strlcpy(ptr, s, i + 1);
+	return (ptr);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**str;
-	int		count;
 	int		i;
-	int		j;
+	int		strs_len;
+	char	**ptr;
 
-	count = count_words(s, c);
-	if (!(str = (char **)malloc(sizeof(char *) * (count + 1))))
+	if (!s)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (i < count)
+	strs_len = count_words(s, c);
+	if (!(ptr = (char **)malloc(sizeof(char *) * (strs_len + 1))))
+		return (NULL);
+	i = -1;
+	while (++i < strs_len)
 	{
-		while (s[j] && s[j] == c)
-			j++;
-		str[i] = ft_substr(s + j, 0, get_words_len(s + j, c));
-		j += get_words_len(s + j, c);
-		i++;
+		while (s[0] == c)
+			s++;
+		if (!(ptr[i] = init_str(s, c)))
+		{
+			while (i > 0)
+				free(ptr[i--]);
+			free(ptr);
+			return (NULL);
+		}
+		s = s + ft_strlen(ptr[i]);
 	}
-	str[i] = 0;
-	return (str);
+	ptr[i] = 0;
+	return (ptr);
 }

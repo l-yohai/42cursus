@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:27:07 by yohlee            #+#    #+#             */
-/*   Updated: 2020/02/27 23:57:28 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/04/12 23:36:56 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	unsigned char	*dst_str;
 	unsigned char	*src_str;
 
+	if (dst == src || !len)
+		return (dst);
 	dst_str = (unsigned char *)dst;
 	src_str = (unsigned char *)src;
 	if (dst_str < src_str)
