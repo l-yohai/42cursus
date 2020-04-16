@@ -5,9 +5,9 @@
 
 cd libft/
 
-make copy
+make / make bonus
 
-make re
+make re / make clean / make fclean
 
 if you use this lib, you must compile after "make re",
 
