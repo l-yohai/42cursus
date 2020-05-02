@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/04 06:50:31 by yohlee            #+#    #+#             */
-/*   Updated: 2020/04/06 15:05:12 by yohlee           ###   ########.fr       */
+/*   Created: 2020/04/29 21:23:57 by yohlee            #+#    #+#             */
+/*   Updated: 2020/05/02 18:12:31 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,122 +14,85 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <wchar.h>
-# include "libft/libft.h"
+# include <stdbool.h>
+# include "./libft/libft.h"
 
-////
-#include <stdio.h>
-////
-
-# define LENGTH_L 1
-# define LENGTH_LL 2
-# define LENGTH_H 3
-# define LENGTH_HH 4
+# define DIGIT_STR "0123456789"
+# define HEX_STR_LOWER "0123456789abcdef"
+# define HEX_STR_UPPER "0123456789ABCDEF"
 
 typedef struct	s_data
 {
-	va_list		args;
-	const char	*format;
+	va_list		ap;
+	char		*format;
 	char		*options;
 	int			ret;
+	bool		minus;
+	bool		zero;
+	bool		check_width;
+	int			width;
+	bool		check_precision;
+	int			precision;
+	int			specifier;
 }				t_data;
 
-typedef struct	s_opt
-{
-	int			minus;
-	int			zero;
-	int			sharp;
-	int			space;
-	int			plus;
-	int			width_check;
-	int			width_asterisk;
-	int			width;
-	int			precision_check;
-	int			precision;
-	int			precision_asterisk;
-	int			length;
-	int			specifier;
-}				t_opt;
-
-
-int		check_flag(t_opt *opt);
-int		is_specifier(int c);
-
-
-
 /*
-** get_opt.c
+** ft_printf.c
 */
 
-int				get_opt_flags(t_data *data, t_opt **opt, int *i);
-int				get_opt_width(t_data *data, t_opt **opt, int *i);
-int				get_opt_precision(t_data *data, t_opt **opt, int *i);
-int				get_opt_length(t_data *data, t_opt **opt, int *i);
-int				get_opt_specifier(t_data *data, t_opt **opt, int *i);
+int	ft_printf(const char *format, ...);
+
+/*
+** get_data.c
+*/
+
+int	init_data(t_data *data);
+int		is_specifier(int c);
+int	parse_options(t_data *data, char *percent_next);
+int	get_argument(t_data *data);
+int	get_data(t_data *data);
+
+/*
+** get_tags.c
+*/
+
+int	get_opt_flags(t_data *data, int *i);
+int	get_opt_precision(t_data *data, int *i);
+int	get_opt_specifier(t_data *data, int *i);
+int	get_tags(t_data *data);
+
+/*
+** apply_tags.c
+*/
+
+bool	check_flags(t_data *data);
 
 /*
 ** ft_printf_c.c
 */
 
-char			*apply_flags_c(char *result, t_opt *opt, int *ret);
-int				apply_options_c(char c, t_data *data, t_opt *opt);
-int				ft_printf_wc(wint_t wc, t_data *data, t_opt *opt);
-int				ft_printf_c(t_data *data, t_opt *opt);
-
-/*
-** wchars_to_str.c
-*/
-
-int				print_utf8_2byte(char *dst, wint_t c);
-int				print_utf8_3byte(char *dst, wint_t c);
-int				print_utf8_4byte(char *dst, wint_t c);
-int				wchar_to_str(char *dst, wint_t c);
-char			*ft_wchars_to_str(const wchar_t *wstr);
-
-
-/*
-** w_len.c
-*/
-
-size_t			ft_wchar_utf8_len(wint_t c);
-size_t			ft_wstr_utf8_len(const wchar_t *s);
-
-/*
-** apply_options.c
-*/
-
-int				apply_flag_sharp(char **result, size_t *len, t_opt *opt, int is_zero);
-int				apply_width(char **result, size_t *len, t_opt *opt);
-int				apply_precision2(char **result, size_t *len, t_opt *opt);
-int				apply_precision(char **result, size_t *len, t_opt *opt);
+int		apply_tags_c(t_data *data, int c);
+int		ft_printf_c(t_data *data);
 
 /*
 ** ft_printf_s.c
 */
 
-int				print_s(char **result, t_data *data, t_opt *opt);
-int				ft_printf_s(t_data *data, t_opt *opt);
+char	*apply_precision_s(t_data *data, char *s, char *result);
+int	apply_width_s(t_data *data, char *result);
+char	*apply_flag_s(t_data *data, char *result, int size);
+int	apply_tags_s(t_data *data, char *s);
+int	ft_printf_s(t_data *data);
 
 /*
-** ft_printf_d.c
+** ft_printf_di.c
 */
+char	*apply_precision(t_data *data, char *nbr, char *result);
+int	apply_width(t_data *data, char *result);
+char	*apply_flag(t_data *data, char *result, int size);
+int	apply_tags(t_data *data, int n);
+int	move_sign(char *result);
+int	ft_printf_di(t_data *data);
 
-/*
-** ft_printf_p.c
-*/
-
-/*
-** ft_printf_u.c
-*/
-
-/*
-** ft_printf_x.c
-*/
-
-/*
-** ft_printf_X.c
-*/
 
 #endif

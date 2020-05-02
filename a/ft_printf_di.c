@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_s.c                                      :+:      :+:    :+:   */
+/*   ft_printf_di.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 22:17:07 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/02 18:02:07 by yohlee           ###   ########.fr       */
+/*   Created: 2020/05/01 01:57:25 by yohlee            #+#    #+#             */
+/*   Updated: 2020/05/02 21:12:43 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-** flag '0' results in undefined behavior with 's' conversion specifier.
-*/
-
-char	*apply_precision_s(t_data *data, char *s, char *result)
+char	*apply_precision(t_data *data, char *nbr, char *result)
 {
+	int	i;
+	int	len;
+
+	i = -1;
+	len = ft_strlen(nbr);
 	if (data->check_precision == true)
 	{
-		if (data->precision < ft_strlen(s))
+		if (nbr[0] == '-')
+			(data->precision)++;
+		if (data->precision > ft_strlen(nbr))
 		{
-			if (!(result = ft_strndup(s, data->precision)))
+			if (!(result = ft_calloc(data->precision + 1, sizeof(char))))
 				return (NULL);
-		}
-		else
-		{
-			if (!(result = ft_strdup(s)))
-				return (NULL);
+			while (++i < data->precision - len)
+				result[i] = '0';
+			ft_strlcat(result, nbr, data->precision + 1);
 		}
 	}
 	else
 	{
-		if (!(result = ft_strdup(s)))
+		if (!(result = ft_strdup(nbr)))
 			return (NULL);
 	}
 	return (result);
 }
 
-int		apply_width_s(t_data *data, char *result)
+int	apply_width(t_data *data, char *result)
 {
-	int		size;
-	int		len;
+	int	size;
+	int	len;
 
 	if (!result)
 		return (-1);
@@ -55,7 +56,7 @@ int		apply_width_s(t_data *data, char *result)
 	return (size);
 }
 
-char	*apply_flag_s(t_data *data, char *result, int size)
+char	*apply_flag(t_data *data, char *result, int size)
 {
 	int		len;
 	int		i;
@@ -76,7 +77,7 @@ char	*apply_flag_s(t_data *data, char *result, int size)
 	else
 	{
 		while (++i < size - len)
-			temp[i] = ' ';
+			temp[i] = (!data->precision && data->zero) ? '0' : ' ';
 		ft_strlcat(temp, result, size + 1);
 	}
 	free(result);
@@ -84,39 +85,61 @@ char	*apply_flag_s(t_data *data, char *result, int size)
 	return (temp);
 }
 
-int		apply_tags_s(t_data *data, char *s)
+int	move_sign(char *result)
 {
-	char	*result;
-	int		size;
+	int	i;
+	int	j;
 
-	result = 0;
-	size = 0;
-	if (!(result = apply_precision_s(data, s, result)))
-		return (-1);
-	if ((size = apply_width_s(data, result)) == -1)
-		return (-1);
-	if (!(result = apply_flag_s(data, result, size)))
-		return (-1);
-	ft_putstr(result);
-	data->ret += ft_strlen(result);
-	free(result);///추
-	result = 0;///가
+	i = 0;
+	j = 0;
+	while (result[i] == ' ')
+		i++;
+	if (result[i] == '0')
+		j = i;
+	while (result[i] == '0')
+		i++;
+	if (result[i] == '-')
+	{
+		result[i] = result[j];
+		result[j] = '-';
+	}
 	return (1);
 }
 
-int		ft_printf_s(t_data *data)
+int	apply_tags(t_data *data, int n)
 {
-	char	*s;
+	char	*result;
+	char	*nbr;
+	int		size;
 
-	if (data->zero == true)
+	result = 0;
+	nbr = ft_itoa(n);
+	size = 0;
+	if (!(result = apply_precision(data, nbr, result)))
 		return (-1);
-	if ((s = va_arg(data->ap, char *)))
-		s = ft_strdup(s);
-	else
-		s = ft_strdup("(null)");
-	if (apply_tags_s(data, s) == -1)
+	if ((size = apply_width(data, result)) == -1)
 		return (-1);
-	free(s);
-	s = 0;
+	if (!(result = apply_flag(data, result, size)))
+		return (-1);
+	if (n < 0 && (data->zero == true || data->check_precision == true))
+		move_sign(result);
+	ft_putstr(result);
+	data->ret += ft_strlen(result);
+	free(nbr);
+	nbr = 0;
+	free(result);
+	result = 0;
+	return (1);
+}
+
+int	ft_printf_di(t_data *data)
+{
+	int	n;
+
+	if (check_flags(data) == false)
+		return (-1);
+	n = va_arg(data->ap, int);
+	if (apply_tags(data, n) == -1)
+		return (-1);
 	return (1);
 }
