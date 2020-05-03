@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:46:59 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/02 17:29:12 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/03 22:43:30 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_data(t_data *data)
 	return (0);
 }
 
-int		is_specifier(int c)
+int	is_specifier(int c)
 {
 	if (c == 'c' || c == 's' || c == 'p'\
 		|| c == 'd' || c == 'i' || c == 'u'\
@@ -66,16 +66,16 @@ int	get_argument(t_data *data)
 		ret = ft_printf_c(data);
 	else if (data->specifier == 's')
 		ret = ft_printf_s(data);
+	else if (data->specifier == 'p')
+		ret = ft_printf_p(data);
 	else if (data->specifier == 'd' || data->specifier == 'i')
 		ret = ft_printf_di(data);
-	// else if (data->specifier == 'p')
-	// 	ret = ft_printf_p(data);
-	// else if (data->specifier == 'u')
-	// 	ret = ft_printf_ux(data);
-	// else if (data->specifier == 'x')
-	// 	ret = ft_printf_ux(data);
-	// else if (data->specifier == 'X')
-	// 	ret = ft_printf_ux(data);
+	else if (data->specifier == 'u')
+		ret = ft_printf_ux(data, DIGIT_STR);
+	else if (data->specifier == 'x')
+		ret = ft_printf_ux(data, HEX_STR_LOWER);
+	else if (data->specifier == 'X')
+		ret = ft_printf_ux(data, HEX_STR_UPPER);
 	else
 		ret = -1;
 	return (ret);

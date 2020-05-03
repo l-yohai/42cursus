@@ -6,31 +6,28 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 01:57:25 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/02 21:12:43 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/03 22:45:16 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*apply_precision(t_data *data, char *nbr, char *result)
+char	*apply_precision_d(t_data *data, char *nbr, char *result)
 {
 	int	i;
 	int	len;
 
 	i = -1;
 	len = ft_strlen(nbr);
-	if (data->check_precision == true)
+	if (data->check_precision == true && data->precision > (int)ft_strlen(nbr))
 	{
 		if (nbr[0] == '-')
 			(data->precision)++;
-		if (data->precision > ft_strlen(nbr))
-		{
-			if (!(result = ft_calloc(data->precision + 1, sizeof(char))))
-				return (NULL);
-			while (++i < data->precision - len)
-				result[i] = '0';
-			ft_strlcat(result, nbr, data->precision + 1);
-		}
+		if (!(result = ft_calloc(data->precision + 1, sizeof(char))))
+			return (NULL);
+		while (++i < data->precision - len)
+			result[i] = '0';
+		ft_strlcat(result, nbr, data->precision + 1);
 	}
 	else
 	{
@@ -40,23 +37,7 @@ char	*apply_precision(t_data *data, char *nbr, char *result)
 	return (result);
 }
 
-int	apply_width(t_data *data, char *result)
-{
-	int	size;
-	int	len;
-
-	if (!result)
-		return (-1);
-	size = 0;
-	len = ft_strlen(result);
-	if (data->check_width == true)
-		size = (len > data->width) ? len : data->width;
-	else
-		size = len;
-	return (size);
-}
-
-char	*apply_flag(t_data *data, char *result, int size)
+char	*apply_flag_d(t_data *data, char *result, int size)
 {
 	int		len;
 	int		i;
@@ -77,7 +58,7 @@ char	*apply_flag(t_data *data, char *result, int size)
 	else
 	{
 		while (++i < size - len)
-			temp[i] = (!data->precision && data->zero) ? '0' : ' ';
+			temp[i] = (!data->check_precision && data->zero) ? '0' : ' ';
 		ft_strlcat(temp, result, size + 1);
 	}
 	free(result);
@@ -85,7 +66,7 @@ char	*apply_flag(t_data *data, char *result, int size)
 	return (temp);
 }
 
-int	move_sign(char *result)
+int		move_sign(char *result)
 {
 	int	i;
 	int	j;
@@ -106,20 +87,21 @@ int	move_sign(char *result)
 	return (1);
 }
 
-int	apply_tags(t_data *data, int n)
+int		apply_tags_d(t_data *data, int n)
 {
-	char	*result;
 	char	*nbr;
+	char	*result;
 	int		size;
 
+	if (!(nbr = ft_itoa(n)))
+		return (-1);
 	result = 0;
-	nbr = ft_itoa(n);
 	size = 0;
-	if (!(result = apply_precision(data, nbr, result)))
+	if (!(result = apply_precision_d(data, nbr, result)))
 		return (-1);
 	if ((size = apply_width(data, result)) == -1)
 		return (-1);
-	if (!(result = apply_flag(data, result, size)))
+	if (!(result = apply_flag_d(data, result, size)))
 		return (-1);
 	if (n < 0 && (data->zero == true || data->check_precision == true))
 		move_sign(result);
@@ -132,14 +114,26 @@ int	apply_tags(t_data *data, int n)
 	return (1);
 }
 
-int	ft_printf_di(t_data *data)
+int		ft_printf_di(t_data *data)
 {
 	int	n;
+	int	i;
 
 	if (check_flags(data) == false)
 		return (-1);
 	n = va_arg(data->ap, int);
-	if (apply_tags(data, n) == -1)
+	i = -1;
+	if (n == 0 && data->check_precision && data->precision == 0)
+	{
+		if (data->check_width)
+		{
+			while (++i < data->width)
+				ft_putchar(' ');
+			data->ret += i;
+		}
+		return (1);
+	}
+	if (apply_tags_d(data, n) == -1)
 		return (-1);
 	return (1);
 }

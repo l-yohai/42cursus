@@ -6,26 +6,11 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:21:09 by yohlee            #+#    #+#             */
-/*   Updated: 2020/04/15 23:45:01 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/03 00:48:04 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int		ft_nbrlen(long long n)
-{
-	int	len;
-
-	len = 1;
-	if (n < 0)
-		n *= -1;
-	while (n >= 10)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
 
 char	*ft_itoa(int n)
 {

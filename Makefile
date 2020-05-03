@@ -6,7 +6,7 @@
 #    By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/18 23:31:37 by yohlee            #+#    #+#              #
-#    Updated: 2020/05/02 21:26:41 by yohlee           ###   ########.fr        #
+#    Updated: 2020/05/03 22:42:28 by yohlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,15 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 INCLUDES = -I./
 
-SRCS =
+SRCS = apply_tags.c\
+		ft_printf_c.c\
+		ft_printf_di.c\
+		ft_printf_p.c\
+		ft_printf_s.c\
+		ft_printf_ux.c\
+		ft_printf.c\
+		get_data.c\
+		get_tags.c
 
 OBJS = $(SRCS:%.c=%.o)
 

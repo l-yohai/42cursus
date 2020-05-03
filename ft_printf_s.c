@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 22:17:07 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/02 18:02:07 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/03 22:45:45 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*apply_precision_s(t_data *data, char *s, char *result)
 {
 	if (data->check_precision == true)
 	{
-		if (data->precision < ft_strlen(s))
+		if (data->precision < (int)ft_strlen(s))
 		{
 			if (!(result = ft_strndup(s, data->precision)))
 				return (NULL);
@@ -37,22 +37,6 @@ char	*apply_precision_s(t_data *data, char *s, char *result)
 			return (NULL);
 	}
 	return (result);
-}
-
-int		apply_width_s(t_data *data, char *result)
-{
-	int		size;
-	int		len;
-
-	if (!result)
-		return (-1);
-	size = 0;
-	len = ft_strlen(result);
-	if (data->check_width == true)
-		size = (len > data->width) ? len : data->width;
-	else
-		size = len;
-	return (size);
 }
 
 char	*apply_flag_s(t_data *data, char *result, int size)
@@ -93,14 +77,14 @@ int		apply_tags_s(t_data *data, char *s)
 	size = 0;
 	if (!(result = apply_precision_s(data, s, result)))
 		return (-1);
-	if ((size = apply_width_s(data, result)) == -1)
+	if ((size = apply_width(data, result)) == -1)
 		return (-1);
 	if (!(result = apply_flag_s(data, result, size)))
 		return (-1);
 	ft_putstr(result);
 	data->ret += ft_strlen(result);
-	free(result);///추
-	result = 0;///가
+	free(result);
+	result = 0;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:21:49 by yohlee            #+#    #+#             */
-/*   Updated: 2020/04/18 23:29:21 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/03 22:37:52 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,6 @@ char				*ft_strndup(const char *s, size_t len);
 void				ft_putnstr(const char *s, int n);
 void				ft_putnbr_base(int n, char *str);
 char				*ft_strnew(size_t size);
-char				*ft_itoa_plus(int n);
-char				*ft_lltoa_base(long long n, char *base);
-char				*ft_ulltoa_base(unsigned long long n, char *base);
-char				*ft_strchrset(const char *s, const char *set);
+char				*ft_uitoa_base(unsigned int n, char *base);
 
 #endif

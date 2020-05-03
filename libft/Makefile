@@ -6,7 +6,7 @@
 #    By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/28 01:17:41 by yohlee            #+#    #+#              #
-#    Updated: 2020/04/18 23:27:59 by yohlee           ###   ########.fr        #
+#    Updated: 2020/05/03 22:38:00 by yohlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,10 +59,7 @@ SRCS = ft_atoi.c\
 		ft_putnstr.c\
 		ft_putnbr_base.c\
 		ft_strnew.c\
-		ft_itoa_plus.c\
-		ft_lltoa_base.c\
-		ft_ulltoa_base.c\
-		ft_strchrset.c
+		ft_uitoa_base.c
 
 SRCS_BONUS = ft_lstadd_back.c \
 		ft_lstadd_front.c \
