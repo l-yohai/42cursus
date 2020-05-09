@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 21:23:57 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/03 22:44:28 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/08 09:23:14 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int				get_tags(t_data *data);
 
 bool			check_flags(t_data *data);
 int				apply_width(t_data *data, char *result);
+int				check_flag_d(t_data *data, char *result);
 
 /*
 ** ft_printf_c.c
@@ -87,7 +88,9 @@ int				ft_printf_s(t_data *data);
 /*
 ** ft_printf_p.c
 */
-
+int				apply_tags_p(t_data *data, char *s);
+char			*remove_zero_address(char *s);
+char			*get_address(t_data *data, char *s);
 int				ft_printf_p(t_data *data);
 
 /*
@@ -106,5 +109,12 @@ int				ft_printf_di(t_data *data);
 
 int				apply_tags_ux(t_data *data, unsigned int n, char *base);
 int				ft_printf_ux(t_data *data, char *base);
+
+/*
+** ft_printf_percent.c
+*/
+
+int				apply_tags_percent(t_data *data);
+int				ft_printf_percent(t_data *data);
 
 #endif

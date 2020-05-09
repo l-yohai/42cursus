@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:45:59 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/01 02:10:59 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/07 12:55:04 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ int	get_opt_width(t_data *data, int *i)
 	{
 		data->check_width = true;
 		data->width = va_arg(data->ap, int);
+		if (data->width < 0)
+		{
+			data->width *= -1;
+			data->minus = true;
+			if (data->zero == true)
+				data->zero = false;
+		}
 	}
 	else if (data->options[*i] >= '1' && data->options[*i] <= '9')
 	{
@@ -45,16 +52,21 @@ int	get_opt_precision(t_data *data, int *i)
 {
 	if (data->options[*i] == '.')
 	{
-		if (data->options[*i + 1] >= '0' && data->options[*i + 1] <= '9')
-		{
-			data->check_precision = true;
-			data->precision = ft_atoi(&data->options[*i + 1]);
-			(*i) += ft_nbrlen(data->precision);
-		}
-		else if (data->options[++(*i)] == '*')
+		if (data->options[*i + 1] == '*')
 		{
 			data->check_precision = true;
 			data->precision = va_arg(data->ap, int);
+			(*i)++;
+		}
+		else if (!(data->options[*i + 1] >= '0'\
+					&& data->options[*i + 1] <= '9'))
+			data->check_precision = true;
+		else if (data->options[*i + 1] >= '0' && data->options[*i + 1] <= '9')
+		{
+			data->check_precision = true;
+			data->precision = ft_atoi(&data->options[*i + 1]);
+			while (data->options[*i + 1] >= '0' && data->options[*i + 1] <= '9')
+				(*i)++;
 		}
 	}
 	else
@@ -86,8 +98,6 @@ int	get_tags(t_data *data)
 			i++;
 		else if (get_opt_specifier(data, &i))
 			i++;
-		else
-			return (-1);
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 21:17:30 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/01 02:11:08 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/08 08:05:24 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int	ft_print(t_data *data)
 		{
 			data->ret += ((ret = write(1, data->format,\
 									percent - data->format)) != -1) ? ret : 0;
-			if (parse_options(data, percent + 1) == -1)
-				return (-1);
-			if (get_data(data) == -1)
+			if (parse_options(data, percent + 1) == -1 || get_data(data) == -1)
 				return (-1);
 		}
 		else
@@ -37,6 +35,7 @@ int	ft_print(t_data *data)
 		}
 		data->format = percent + ft_strlen(data->options) + 1;
 		free(data->options);
+		init_data(data);
 	}
 	return (ret);
 }
@@ -45,10 +44,13 @@ int	ft_printf(const char *format, ...)
 {
 	t_data	data;
 
+	if (!format)
+		return (-1);
 	va_start(data.ap, format);
 	init_data(&data);
 	data.format = (char *)format;
-	if (!ft_print(&data))
+	data.ret = 0;
+	if (ft_print(&data) == -1)
 		data.ret = -1;
 	va_end(data.ap);
 	return (data.ret);

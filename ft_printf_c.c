@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:48:33 by yohlee            #+#    #+#             */
-/*   Updated: 2020/04/30 22:16:55 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/06 22:55:56 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	ft_printf_c(t_data *data)
 {
 	int	c;
 
-	if (data->zero == true || data->check_precision == true)
+	if (data->zero == true\
+		|| (data->check_precision == true && data->precision != 0))
 		return (-1);
 	c = va_arg(data->ap, int);
 	if (apply_tags_c(data, c) == -1)

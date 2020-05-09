@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 13:08:11 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/03 22:43:00 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/08 07:25:44 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,28 @@ int		apply_width(t_data *data, char *result)
 	else
 		size = len;
 	return (size);
+}
+
+int		check_flag_d(t_data *data, char *result)
+{
+	int	i;
+
+	i = 0;
+	if (data->zero == true)
+	{
+		if (data->check_precision == true && data->precision >= 0\
+				&& data->precision < (int)ft_strlen(result))
+		{
+			while (result[i] &&\
+					i < (int)ft_strlen(result) - data->precision)
+			{
+				if (result[i] >= '1' && result[i] <= '9')
+					break ;
+				if (result[i] == '0')
+					result[i] = ' ';
+				i++;
+			}
+		}
+	}
+	return (1);
 }

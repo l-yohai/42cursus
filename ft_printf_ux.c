@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 00:16:36 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/03 22:43:11 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/08 05:14:56 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		apply_tags_ux(t_data *data, unsigned int n, char *base)
 		return (-1);
 	if (!(result = apply_flag_d(data, result, size)))
 		return (-1);
+	check_flag_d(data, result);
 	ft_putstr(result);
 	data->ret += ft_strlen(result);
 	free(nbr);

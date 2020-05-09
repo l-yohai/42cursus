@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 01:57:25 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/03 22:45:16 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/08 08:08:54 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char	*apply_precision_d(t_data *data, char *nbr, char *result)
 	int	len;
 
 	i = -1;
+	if (nbr[0] == '-' && data->precision != -1)
+		(data->precision)++;
 	len = ft_strlen(nbr);
 	if (data->check_precision == true && data->precision > (int)ft_strlen(nbr))
 	{
-		if (nbr[0] == '-')
-			(data->precision)++;
 		if (!(result = ft_calloc(data->precision + 1, sizeof(char))))
 			return (NULL);
 		while (++i < data->precision - len)
@@ -58,7 +58,7 @@ char	*apply_flag_d(t_data *data, char *result, int size)
 	else
 	{
 		while (++i < size - len)
-			temp[i] = (!data->check_precision && data->zero) ? '0' : ' ';
+			temp[i] = (data->zero == true) ? '0' : ' ';
 		ft_strlcat(temp, result, size + 1);
 	}
 	free(result);
@@ -103,7 +103,8 @@ int		apply_tags_d(t_data *data, int n)
 		return (-1);
 	if (!(result = apply_flag_d(data, result, size)))
 		return (-1);
-	if (n < 0 && (data->zero == true || data->check_precision == true))
+	check_flag_d(data, result);
+	if (n < 0 && ft_strchr(result, '0'))
 		move_sign(result);
 	ft_putstr(result);
 	data->ret += ft_strlen(result);
@@ -119,8 +120,8 @@ int		ft_printf_di(t_data *data)
 	int	n;
 	int	i;
 
-	if (check_flags(data) == false)
-		return (-1);
+	// if (check_flags(data) == false)
+	// 	return (-1);
 	n = va_arg(data->ap, int);
 	i = -1;
 	if (n == 0 && data->check_precision && data->precision == 0)

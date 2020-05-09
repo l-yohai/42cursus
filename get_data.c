@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:46:59 by yohlee            #+#    #+#             */
-/*   Updated: 2020/05/03 22:43:30 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/05/08 07:58:41 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	init_data(t_data *data)
 {
-	data->format = 0;
 	data->options = 0;
-	data->ret = 0;
 	data->minus = false;
 	data->zero = false;
 	data->check_width = false;
@@ -31,9 +29,9 @@ int	is_specifier(int c)
 {
 	if (c == 'c' || c == 's' || c == 'p'\
 		|| c == 'd' || c == 'i' || c == 'u'\
-		|| c == 'x' || c == 'X')
+		|| c == 'x' || c == 'X' || c == '%')
 		return (1);
-	return (0);
+	return (-1);
 }
 
 int	parse_options(t_data *data, char *percent_next)
@@ -49,12 +47,17 @@ int	parse_options(t_data *data, char *percent_next)
 	}
 	while (percent_next[i])
 	{
-		if (is_specifier(percent_next[i]))
+		if (is_specifier(percent_next[i]) == 1)
+		{
 			if (!(data->options = ft_strndup(percent_next, i + 1)))
 				return (-1);
+			break ;
+		}
 		i++;
 	}
-	return (0);
+	if (!percent_next[i] || is_specifier(percent_next[i]) == -1)
+		return (-1);
+	return (1);
 }
 
 int	get_argument(t_data *data)
@@ -76,6 +79,8 @@ int	get_argument(t_data *data)
 		ret = ft_printf_ux(data, HEX_STR_LOWER);
 	else if (data->specifier == 'X')
 		ret = ft_printf_ux(data, HEX_STR_UPPER);
+	else if (data->specifier == '%')
+		ret = ft_printf_percent(data);
 	else
 		ret = -1;
 	return (ret);
@@ -86,12 +91,6 @@ int	get_data(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->options[i] == '%')
-	{
-		ft_putchar('%');
-		data->ret++;
-		return (1);
-	}
 	if (!(get_tags(data)))
 		return (-1);
 	if ((get_argument(data)) < 0)

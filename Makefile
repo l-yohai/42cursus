@@ -6,7 +6,7 @@
 #    By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/18 23:31:37 by yohlee            #+#    #+#              #
-#    Updated: 2020/05/03 22:42:28 by yohlee           ###   ########.fr        #
+#    Updated: 2020/05/04 05:09:37 by yohlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = apply_tags.c\
 		ft_printf_c.c\
 		ft_printf_di.c\
 		ft_printf_p.c\
+		ft_printf_percent.c\
 		ft_printf_s.c\
 		ft_printf_ux.c\
 		ft_printf.c\
