@@ -14,22 +14,22 @@
 |:dizzy:|									|			|**= 2 months**			|							|				|
 |02		|[ft_server](./02-ft_server)		|docker		|2020.05.09 ~ 2020.05.22	|100% :heavy_check_mark:	|level 2 - 30%	|
 |02		|Exam Rank 02						|C			|2020.05.26					|100% :heavy_check_mark:	|level 2 - 30%	|
-|02		|cub3d								|?			|2020.05.23 ~				|							|				|
+|02		|cub3d								|			|2020.05.23 ~				|							|				|
 |:dizzy:|									|			|							|							|				|
-|03		|Exam Rank 03						|?			|-							|							|				|
-|03		|libasm								|?			|							|							|				|
-|03		|minishell							|?			|							|							|				|
-|03		|ft_services						|?			|							|							|				|
+|03		|Exam Rank 03						|			|-							|							|				|
+|03		|libasm								|			|							|							|				|
+|03		|minishell							|			|							|							|				|
+|03		|ft_services						|			|							|							|				|
 |:dizzy:|									|			|							|							|				|
-|04		|Exam Rank 04						|?			|							|							|				|
-|04		|Philosophers						|?			|							|							|				|
+|04		|Exam Rank 04						|			|							|							|				|
+|04		|Philosophers						|			|							|							|				|
 |04		|CPP Modules (9)					|C++		|							|							|				|
 |:dizzy:|									|			|							|							|				|
-|05		|Exam Rank 05						|?			|							|							|				|
-|05		|ft_containers						|?			|							|							|				|
-|05		|webserv							|?			|							|							|				|
-|05		|ft_irc								|?			|							|							|				|
+|05		|Exam Rank 05						|			|							|							|				|
+|05		|ft_containers						|			|							|							|				|
+|05		|webserv							| 		|							|							|				|
+|05		|ft_irc								|			|							|							|				|
 |:dizzy:|									|			|							|							|				|
-|06		|Exam Rank 06						|?			|							|							|				|
-|06		|ft_transcendence					|?			|							|							|				|
+|06		|Exam Rank 06						|			|							|							|				|
+|06		|ft_transcendence					|			|							|							|				|
 |:dizzy:|									|			|							|							|				|
