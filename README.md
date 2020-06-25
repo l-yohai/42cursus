@@ -3,7 +3,7 @@
 
 ### Common Circle (42cursus curriculum)
 
-|CIRCLE	|PROJECT							|LANGUAGE	|DURATION					|STATUS						|ATTAINED LEVEL	|
+|CIRCLE	|PROJECT							|LANGUAGE	|DURATION					|RESULT						|LEVEL	|
 |:-:	|:--								|:-:		|:--:						|--:						|:--			|
 |		|									|			|							|							|				|
 |00		|[Libft](./00-libft)				|C			|2020.02.24 ~ 2020.03.01	|115% :heavy_check_mark:	|level 1 - 03%	|
