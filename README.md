@@ -1,8 +1,9 @@
 # 42cursus
 
 Begin: 2020.02.24.
-<br>
-From 42Seoul
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/42_Logo.svg" alt="42 Logo.svg" width="142"></p> 
+42Seoul
 
 ### Circle (42cursus curriculum)
 
