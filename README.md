@@ -1,6 +1,8 @@
 # 42cursus
 
-Coding developed at the 42cursus - begin date: 24/Fev/2020.
+Begin: 2020.02.24.
+<br>
+From 42Seoul
 
 ### Circle (42cursus curriculum)
 
