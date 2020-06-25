@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 8de131a17e63c169240a4620899ea1c1e69e69e0
 # 42cursus
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/42_Logo.svg" alt="42 Logo.svg" width="142"></p> 
 
@@ -39,36 +34,4 @@
 |		|ft_transcendence					|			|							|							|				|
 |:dizzy:|									|			|							|							|				|
 =======
-<<<<<<< HEAD
-# libft
-42 first project - Libft
 
-## USAGE
-
-cd libft/
-
-make / make bonus
-
-make re / make clean / make fclean
-
-if you use this lib, you must compile after "make re",
-
-gcc -Wall -Werror -Wextra "".c -L./libft -lft
->>>>>>> libft/master
-=======
-# get_next_line
-42 project get_next_line
-
-
-## Usage
-
-* normal
-
-gcc -Wall -Werror -Wextra get_next_line.c get_next_line_utils.c
-
-* bonus
-
-gcc -Wall -Werror -Wextra get_next_line_bonus.c get_next_line_utils_bonus.c
->>>>>>> get_next_line/master
-=======
->>>>>>> 8de131a17e63c169240a4620899ea1c1e69e69e0
