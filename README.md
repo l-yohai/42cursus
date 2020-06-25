@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 42cursus
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/42_Logo.svg" alt="42 Logo.svg" width="142"></p> 
 
@@ -35,18 +34,3 @@
 |		|ft_transcendence					|			|							|							|				|
 |:dizzy:|									|			|							|							|				|
 =======
-# libft
-42 first project - Libft
-
-## USAGE
-
-cd libft/
-
-make / make bonus
-
-make re / make clean / make fclean
-
-if you use this lib, you must compile after "make re",
-
-gcc -Wall -Werror -Wextra "".c -L./libft -lft
->>>>>>> libft/master
