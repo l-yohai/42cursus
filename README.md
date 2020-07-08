@@ -14,7 +14,7 @@
 |:dizzy:|									|			|**= 2 months**				|							|				|
 |02		|[ft_server](./02-ft_server)		|docker		|2020.05.09 ~ 2020.05.22	|100% :heavy_check_mark:	|level 2 - 30%	|
 |		|Exam Rank 02						|C			|2020.05.26					|100% :heavy_check_mark:	|level 2 - 30%	|
-|		|cub3d								|C			|2020.05.23 ~ 2020.07.08	|101% :heavy_check_mark:	|level 3 - 09%	|
+|		|[cub3d](./02-cub3d)								|C			|2020.05.23 ~ 2020.07.08	|101% :heavy_check_mark:	|level 3 - 09%	|
 |:dizzy:|									|			|							|							|				|
 |03		|Exam Rank 03						|			|2020.07.10					|							|				|
 |		|libasm								|C, Assembly|2020.07.09 ~				|							|				|
