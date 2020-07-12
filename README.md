@@ -1,4 +1,4 @@
-# 42cursus
+#42cursus
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/42_Logo.svg" alt="42 Logo.svg" width="142"></p> 
 
 ### Common Circle (42cursus curriculum)
@@ -17,7 +17,7 @@
 |		|[cub3d](./02-cub3d)				|C			|2020.05.23 ~ 2020.07.08	|101% :heavy_check_mark:	|level 3 - 09%	|
 |:dizzy:|									|			|**= 2 months**				|							|				|
 |03		|Exam Rank 03						|			|2020.07.10					|100% :heavy_check_mark:	|level 3 - 09%	|
-|		|[libasm](./03-libasm)				|C, Assembly|2020.07.09 ~				|							|				|
+|		|[libasm](./03-libasm)				|C, Assembly|2020.07.09 ~ 2020.07.12	|100$ :heavy_check_mark:	|level 3 - 30%	|
 |		|[minishell](./03-minishell)		|			|							|							|				|
 |		|[ft_services](./03-ft_services)	|			|							|							|				|
 |:dizzy:|									|			|							|							|				|
