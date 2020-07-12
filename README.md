@@ -17,7 +17,7 @@
 |		|[cub3d](./02-cub3d)				|C			|2020.05.23 ~ 2020.07.08	|101% :heavy_check_mark:	|level 3 - 09%	|
 |:dizzy:|									|			|**= 2 months**				|							|				|
 |03		|Exam Rank 03						|			|2020.07.10					|100% :heavy_check_mark:	|level 3 - 09%	|
-|		|[libasm](./03-libasm)				|C, Assembly|2020.07.09 ~ 2020.07.12	|100$ :heavy_check_mark:	|level 3 - 30%	|
+|		|[libasm](./03-libasm)				|C, Assembly|2020.07.09 ~ 2020.07.12	|100% :heavy_check_mark:	|level 3 - 30%	|
 |		|[minishell](./03-minishell)		|			|							|							|				|
 |		|[ft_services](./03-ft_services)	|			|							|							|				|
 |:dizzy:|									|			|							|							|				|
