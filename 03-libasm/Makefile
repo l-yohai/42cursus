@@ -7,13 +7,13 @@ SRCS = srcs/ft_strlen.s\
 	srcs/ft_read.s\
 	srcs/ft_strdup.s
 
-OBJS = $(SRCS:%.s=%.o)
+OBJS = $(SRCS:.s=.o)
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-%.o: %.s
-	nasm -f elf64 $<
+.s.o:
+	nasm -f macho64 $<
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
@@ -29,5 +29,5 @@ fclean: clean
 re: fclean all
 
 test: $(NAME)
-	$(CC) $(CFLAGS) -I. -L. -lasm -no-pie main.c
+	$(CC) main.c -I. -L. -lasm $(CFLAGS)
 	@./a.out

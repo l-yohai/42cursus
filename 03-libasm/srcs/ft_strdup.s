@@ -1,7 +1,7 @@
-global	ft_strdup
-extern	malloc
+global	_ft_strdup
+extern	_malloc
 
-ft_strdup:
+_ft_strdup:
 	cmp rdi, 0
 	je error
 
@@ -20,7 +20,7 @@ malloc_start:
 	push rdi
 	inc rcx
 	mov rdi, rcx
-	call malloc
+	call _malloc
 	pop rdi
 	cmp rax, 0
 	je error

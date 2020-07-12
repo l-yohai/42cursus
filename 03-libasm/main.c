@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 08:00:26 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/12 16:57:36 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/12 17:22:39 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
 
 int			ft_strlen(char const *str);
 int			ft_strcmp(char const *s1, char const *s2);
@@ -69,7 +70,6 @@ void	test_read_write(int fd, void *buf, size_t nbyte)
 	printf("read & write test\n");
 	while (ft_read(fd, buf, nbyte))
 		ft_write(1, buf, nbyte);
-	printf("\n");
 	printf("===========end===========\n\n");
 }
 
