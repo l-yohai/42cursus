@@ -1,5 +1,5 @@
 global ft_read
-extern ___error
+;extern ___error
 
 ft_read:
 	mov rax, 0
@@ -8,8 +8,8 @@ ft_read:
 	ret
 
 error:
-	push rax
-	call ___error
-	pop qword[rax]
+;	push rax
+;	call ___error
+;	pop qword[rax]
 	mov rax, -1
 	ret

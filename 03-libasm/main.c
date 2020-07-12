@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 08:00:26 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/12 15:47:25 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/12 16:57:36 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,52 +25,52 @@ char		*ft_strdup(char const *s1);
 void	test_strlen(char *s)
 {
 	printf("\n");
-	printf("strlen test\n");
 	printf("==========start==========\n");
+	printf("strlen test\n");
 	printf("string: %s\n", s);
 	printf("ft_strlen: %d\n", ft_strlen(s));
-	printf("===========end===========");
+	printf("===========end===========\n\n");
 }
 
 void	test_strcmp(char *s1, char *s2)
 {
 	printf("\n");
-	printf("strcmp test\n");
 	printf("==========start==========\n");
+	printf("strcmp test\n");
 	printf("s1: %s\ns2: %s\n", s1, s2);
 	printf("ft_strcmp: %d\n", ft_strcmp(s1, s2));
-	printf("===========end===========");
+	printf("===========end===========\n\n");
 }
 
 void	test_strcpy(char *s1, char *s2)
 {
 	printf("\n");
-	printf("strcpy test\n");
 	printf("==========start==========\n");
-	printf("s1: %s\ns2: %s\n", s1, s2);
+	printf("strcpy test\n");
+	printf("string: %s\n", s2);
 	printf("ft_strcpy: %s\n", ft_strcpy(s1, s2));
-	printf("===========end===========");
+	printf("===========end===========\n\n");
 }
 
 void	test_strdup(char *s1)
 {
 	printf("\n");
-	printf("strdup test\n");
 	printf("==========start==========\n");
+	printf("strdup test\n");
 	printf("string: %s\n", s1);
 	printf("ft_strdup: %s\n", ft_strdup(s1));
-	printf("===========end===========");
+	printf("===========end===========\n\n");
 }
 
 void	test_read_write(int fd, void *buf, size_t nbyte)
 {
 	printf("\n");
-	printf("read & write test\n");
 	printf("==========start==========\n");
+	printf("read & write test\n");
 	while (ft_read(fd, buf, nbyte))
 		ft_write(1, buf, nbyte);
 	printf("\n");
-	printf("===========end===========");
+	printf("===========end===========\n\n");
 }
 
 int		main(void)
@@ -86,5 +86,6 @@ int		main(void)
 	test_strcmp(s, "Hello world");
 	test_strdup(s);
 	test_read_write(fd, &buf, 1);
+	close(fd);
 	return (0);
 }

@@ -1,11 +1,11 @@
 global	ft_strdup
-extern	_malloc
+extern	malloc
 
 ft_strdup:
 	cmp rdi, 0
 	je error
 
-_strlen:
+get_len:
 	xor rcx, rcx
 	jmp len
 
@@ -16,16 +16,19 @@ len:
 	cmp byte[rdi + rcx], 0
 	jne increment
 
-_malloc:
+malloc_start:
 	push rdi
 	inc rcx
 	mov rdi, rcx
-	call _malloc
+	call malloc
 	pop rdi
 	cmp rax, 0
 	je error
+
+init:
 	xor rcx, rcx
 	xor rdx, rdx
+	jmp dup
 
 compare:
 	cmp byte[rdi + rcx], 0
