@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: yohlee <yohlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/07 16:20:03 by yohlee            #+#    #+#             */
-/*   Updated: 2020/03/09 08:52:36 by yohlee           ###   ########.fr       */
+/*   Created: 2020/04/18 02:33:22 by yohlee            #+#    #+#             */
+/*   Updated: 2020/07/13 11:08:35 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-/*
-** a single static variable.
-** multiple file descriptors.
-*/
 
 t_list	*make_new_list(int fd)
 {
@@ -29,11 +24,11 @@ t_list	*make_new_list(int fd)
 	return (new);
 }
 
-char	*str_dup_cat(char *s1, char *s2)
+char	*combine_str(char *s1, char *s2)
 {
 	int		i;
 	int		j;
-	int 	len;
+	int		len;
 	char	*res;
 
 	if (!s1)
@@ -55,38 +50,38 @@ char	*str_dup_cat(char *s1, char *s2)
 	return (res);
 }
 
-int		get_line(char *lines, char **line, char *found_chr)
+int		move_lines(char **line, t_list *mv_info, char *new_line)
 {
-	*line = ft_substr(lines, 0, found_chr - lines);
-	++found_chr;
-	ft_memmove(lines, found_chr, ft_strlen(found_chr) + 1);
+	if (!(*line = ft_substr(mv_info->lines, 0, new_line - mv_info->lines)))
+		return (-1);
+	++new_line;
+	ft_memmove(mv_info->lines, new_line, ft_strlen(new_line) + 1);
 	return (1);
 }
 
-char	*read_lines(int fd, char **line, char *lines)
+int		read_lines(int fd, char **line, char *buf, t_list *mv_info)
 {
-	char		*found_chr;
-	int			bytes;
-	char		buf[BUFFER_SIZE + 1];
+	char	*new_line;
+	int		bytes;
 
-	while (((bytes = read(fd, buf, BUFFER_SIZE)) > 0))
+	while ((bytes = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[bytes] = '\0';
-		lines = str_dup_cat(lines, buf);
-		if ((found_chr = ft_strchr(lines, '\n')))
+		if (!(mv_info->lines = combine_str(mv_info->lines, buf)))
+			return (-1);
+		if ((new_line = ft_strchr(mv_info->lines, '\n')))
 		{
-			get_line(lines, line, found_chr);
-			return (lines);
+			if (!(move_lines(line, mv_info, new_line)))
+				return (-1);
+			return (1);
 		}
 	}
-	if (lines)
-	{
-		*line = ft_strdup(lines);
-		free(lines);
-		lines = 0;
-		return (0);
-	}
-	*line = ft_strdup("");
+	if (bytes == 0)
+		*line = (mv_info->lines) ? ft_strdup(mv_info->lines) : ft_strdup("");
+	else if (bytes == -1)
+		*line = ft_strdup("");
+	free(mv_info->lines);
+	mv_info->lines = 0;
 	return (0);
 }
 
@@ -94,9 +89,11 @@ int		get_next_line(int fd, char **line)
 {
 	static t_list	*fd_info;
 	t_list			*mv_info;
-	char			*found_chr;
+	char			*buf;
+	char			*new_line;
+	int				ret;
 
-	if (!fd || fd > 65536 || !line || BUFFER_SIZE < 1 || read(fd, NULL, 0) < 0)
+	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, NULL, 0) < 0)
 		return (-1);
 	if (!fd_info)
 		fd_info = make_new_list(fd);
@@ -107,9 +104,12 @@ int		get_next_line(int fd, char **line)
 			mv_info->next = make_new_list(fd);
 		mv_info = mv_info->next;
 	}
-	if (mv_info->lines && (found_chr = ft_strchr(mv_info->lines, '\n')))
-		return (get_line(mv_info->lines, line, found_chr));
-	if ((mv_info->lines = read_lines(fd, line, mv_info->lines)))
-		return (1);
-	return (0);
+	if (mv_info->lines && (new_line = ft_strchr(mv_info->lines, '\n')))
+		return (move_lines(line, mv_info, new_line));
+	if (!(buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (-1);
+	ret = read_lines(fd, line, buf, mv_info);
+	free(buf);
+	buf = 0;
+	return (ret);
 }

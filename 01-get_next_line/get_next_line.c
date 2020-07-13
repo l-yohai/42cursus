@@ -3,27 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: yohlee <yohlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/02 16:35:52 by yohlee            #+#    #+#             */
-/*   Updated: 2020/03/09 08:52:40 by yohlee           ###   ########.fr       */
+/*   Created: 2020/04/18 00:38:05 by yohlee            #+#    #+#             */
+/*   Updated: 2020/07/13 11:09:10 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*
-** return (1): line has been read.
-** return (0): EOF has been reached.
-** return (-1): an error happend.
-** read without newline.
-*/
-
-char	*str_dup_cat(char *s1, char *s2)
+char	*combine_str(char *s1, char *s2)
 {
 	int		i;
 	int		j;
-	int 	len;
+	int		len;
 	char	*res;
 
 	if (!s1)
@@ -45,51 +38,79 @@ char	*str_dup_cat(char *s1, char *s2)
 	return (res);
 }
 
-int		get_line(char *lines, char **line, char *found_chr)
+int		move_lines(char **line, char **lines, char *new_line)
 {
-	*line = ft_substr(lines, 0, found_chr - lines);
-	++found_chr;
-	ft_memmove(lines, found_chr, ft_strlen(found_chr) + 1);
+	if (!(*line = ft_substr(*lines, 0, new_line - *lines)))
+		return (-1);
+	++new_line;
+	ft_memmove(*lines, new_line, ft_strlen(new_line) + 1);
 	return (1);
 }
 
-char	*read_lines(int fd, char **line, char *lines)
+int		read_lines(int fd, char **line, char **lines, char *buf)
 {
-	char		*found_chr;
-	int			bytes;
-	char		buf[BUFFER_SIZE + 1];
+	char	*new_line;
+	int		bytes;
 
-	while (((bytes = read(fd, buf, BUFFER_SIZE)) > 0))
+	while ((bytes = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[bytes] = '\0';
-		lines = str_dup_cat(lines, buf);
-		if ((found_chr = ft_strchr(lines, '\n')))
+		if (!(*lines = combine_str(*lines, buf)))
+			return (-1);
+		if ((new_line = ft_strchr(*lines, '\n')))
 		{
-			get_line(lines, line, found_chr);
-			return (lines);
+			if (!(move_lines(line, lines, new_line)))
+				return (-1);
+			return (1);
 		}
 	}
+	if (bytes == 0)
+		*line = (*lines) ? ft_strdup(*lines) : ft_strdup("");
+	else if (bytes == -1)
+		*line = ft_strdup("");
+	free(*lines);
+	*lines = 0;
+	return (0);
+}
+
+int		all_free(char *lines, char *new_line, char *buf)
+{
 	if (lines)
 	{
-		*line = ft_strdup(lines);
 		free(lines);
 		lines = 0;
-		return (0);
 	}
-	*line = ft_strdup("");
+	if (new_line)
+	{
+		free(new_line);
+		new_line = 0;
+	}
+	if (buf)
+	{
+		free(buf);
+		buf = 0;
+	}
 	return (0);
 }
 
 int		get_next_line(int fd, char **line)
 {
 	static char	*lines;
-	char		*found_chr;
+	char		*new_line;
+	char		*buf;
+	int			ret;
 
-	if (!fd || fd > 65536 || !line || BUFFER_SIZE < 1 || read(fd, NULL, 0) < 0)
+	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, NULL, 0) < 0)
 		return (-1);
-	if (lines && (found_chr = ft_strchr(lines, '\n')))
-		return (get_line(lines, line, found_chr));
-	if ((lines = read_lines(fd, line, lines)))
-		return (1);
-	return (0);
+	if (lines && (new_line = ft_strchr(lines, '\n')))
+		return (move_lines(line, &lines, new_line));
+	if (!(buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	{
+		all_free(lines, new_line, buf);
+		return (-1);
+	}
+	ret = read_lines(fd, line, &lines, buf);
+	free(buf);
+	buf = 0;
+	return (ret);
 }
