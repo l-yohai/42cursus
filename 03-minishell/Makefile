@@ -3,21 +3,51 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/07/14 19:39:47 by yohlee            #+#    #+#              #
-#    Updated: 2020/07/14 19:42:02 by yohlee           ###   ########.fr        #
+#    Created: 2020/03/08 22:07:17 by jujeong           #+#    #+#              #
+#    Updated: 2020/06/19 16:09:56 by jujeong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CC = gcc
+
 NAME = minishell
 
-SRCDIR = ./srcs/
-SRCNAMES = $(shell ls $(SRCDIR) | grep -E ".+\.c")
-SRCS = $(addprefix $(SRCDIR), $(SRCNAMES))
-INCS = ./includes/
-BUILDDIR = ./build/
-BUILDOBJS = $(addprefix $(BUILDDIR), $(SRCNAMES:.c=.o))
+FLAGS = -Wall -Wextra -Werror
 
-LIBDIR = ./libft/
-LIBFT = ./libft/libft.a
+LIBFT = libft
+
+DIR_S = .
+
+DIR_O = temporary
+
+HEADER = .
+
+SOURCES = minishell.c minishell_utils.c get_next_line.c get_next_line_utils.c
+
+SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
+
+OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	make -C $(LIBFT)
+	cp libft/libft.a .
+	$(CC) $(FLAGS) -I $(HEADER) -o $(NAME) $(OBJS) libft.a
+
+$(DIR_O)/%.o: $(DIR_S)/%.c
+	mkdir -p temporary
+	$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
+
+clean:
+	rm -f $(OBJS)
+	rm -rf $(DIR_O)
+	make clean -C $(LIBFT)
+
+fclean: clean
+	rm -f $(NAME)
+	make fclean -C $(LIBFT)
+
+re: fclean all
