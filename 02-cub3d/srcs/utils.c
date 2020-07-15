@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 07:35:23 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/07 11:04:36 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/15 10:15:20 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_free_2d(char **str)
 		i++;
 	}
 	free(str);
+	str = 0;
 }
 
 int		is_dir(int c)
