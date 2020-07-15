@@ -3,25 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 14:27:05 by yohlee            #+#    #+#             */
-/*   Updated: 2020/02/27 18:47:25 by yohlee           ###   ########.fr       */
+/*   Created: 2020/02/24 21:05:07 by jujeong           #+#    #+#             */
+/*   Updated: 2020/04/06 13:49:10 by jujeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t len)
+void	*ft_memcpy(void *dest, const void *src, size_t len)
 {
-	char	*dst_str;
-	char	*src_str;
+	size_t		i;
+	char		*dest_c;
+	const char	*src_c;
 
-	if (dst == src || len == 0)
-		return (dst);
-	dst_str = (char *)dst;
-	src_str = (char *)src;
-	while (len--)
-		*dst_str++ = *src_str++;
-	return (dst);
+	if (!dest && !src)
+		return (0);
+	i = 0;
+	dest_c = (char *)dest;
+	src_c = (const char *)src;
+	while (i < len)
+	{
+		dest_c[i] = src_c[i];
+		i++;
+	}
+	return (dest);
 }

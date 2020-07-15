@@ -3,36 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 14:26:10 by yohlee            #+#    #+#             */
-/*   Updated: 2020/04/14 22:08:07 by yohlee           ###   ########.fr       */
+/*   Created: 2020/03/04 00:14:22 by jujeong           #+#    #+#             */
+/*   Updated: 2020/04/08 13:00:56 by jujeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
-int	ft_atoi(const char *nptr)
+static int	check_over_range(unsigned long long num, int m)
 {
-	int	i;
-	int	is_n;
-	int	num;
+	if (num > LLONG_MAX - 1 && m == -1)
+		return (0);
+	if (num > LLONG_MAX && m == 1)
+		return (-1);
+	return (num * m);
+}
 
-	i = 0;
-	is_n = 1;
+int			ft_atoi(const char *str)
+{
+	int					m;
+	unsigned long long	num;
+
+	m = 1;
 	num = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	while (*str && (*str == ' ' || *str == '\t' || *str == '\n' || \
+		*str == '\v' || *str == '\f' || *str == '\r'))
+		str++;
+	if (*str == '-')
+		m = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str && *str >= '0' && *str <= '9')
 	{
-		if (nptr[i] == '-')
-			is_n *= (-1);
-		i++;
+		num = num * 10 + *str - '0';
+		str++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		num = num * 10 + nptr[i] - '0';
-		i++;
-	}
-	return (num * is_n);
+	return (check_over_range(num, m));
 }

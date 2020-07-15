@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/28 14:21:04 by yohlee            #+#    #+#             */
-/*   Updated: 2020/04/13 01:23:57 by yohlee           ###   ########.fr       */
+/*   Created: 2020/02/25 21:40:48 by jujeong           #+#    #+#             */
+/*   Updated: 2020/03/04 00:25:11 by jujeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (!fd)
-		return ;
-	if (n >= 0)
+	char		num[20];
+	long long	l;
+	int			len;
+
+	l = (long long)n;
+	len = (l > 0) ? 0 : 1;
+	l = (l > 0) ? l : l * -1;
+	while (n)
+		n = len++ ? n / 10 : n / 10;
+	num[len] = '\0';
+	while (l)
 	{
-		if (n >= 10)
-			ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
+		num[--len] = l % 10 + '0';
+		l = l / 10;
 	}
-	else
-	{
-		ft_putchar_fd('-', fd);
-		if (n < -9)
-			ft_putnbr_fd(n / (-10), fd);
-		ft_putchar_fd((n % 10 * -1) + '0', fd);
-	}
+	if (len != 0 && num[1] == '\0')
+		num[0] = '0';
+	if (len != 0 && num[1] != '\0')
+		num[0] = '-';
+	write(fd, num, ft_strlen(num));
 }

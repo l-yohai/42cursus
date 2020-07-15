@@ -3,42 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/02 01:01:58 by yohlee            #+#    #+#             */
-/*   Updated: 2020/04/12 23:21:15 by yohlee           ###   ########.fr       */
+/*   Created: 2020/02/27 14:43:04 by jujeong           #+#    #+#             */
+/*   Updated: 2020/03/04 00:20:41 by jujeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** *(*f): func used to iterate.
-**
-** malloc, free.
-*/
-
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new;
-	t_list	*curr;
 	t_list	*temp;
 
-	if (!lst || !f)
-		return (NULL);
-	if (!(new = ft_lstnew(f(lst->content))))
-		return (NULL);
-	curr = new;
-	lst = lst->next;
+	if (!lst)
+		return (0);
+	new = 0;
 	while (lst)
 	{
 		if (!(temp = ft_lstnew(f(lst->content))))
 		{
 			ft_lstclear(&new, del);
-			return (NULL);
+			return (0);
 		}
-		curr->next = temp;
-		curr = temp;
+		ft_lstadd_back(&new, temp);
 		lst = lst->next;
 	}
 	return (new);

@@ -3,35 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 14:26:58 by yohlee            #+#    #+#             */
-/*   Updated: 2020/02/27 19:32:33 by yohlee           ###   ########.fr       */
+/*   Created: 2020/02/24 21:53:51 by jujeong           #+#    #+#             */
+/*   Updated: 2020/03/04 00:21:30 by jujeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-**	copies bytes from src to dst
-**	if (unsigned char)c occurs in src,
-**	copy stops and byte after c in dst is returned.
-*/
-
-void	*ft_memccpy(void *dst, const void *src, int c, size_t len)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t len)
 {
-	unsigned char	*dst_str;
-	unsigned char	*src_str;
+	unsigned char		*dest_c;
+	const unsigned char	*src_c;
+	size_t				i;
 
-	src_str = (unsigned char *)src;
-	dst_str = (unsigned char *)dst;
-	while (len--)
+	i = 0;
+	dest_c = (unsigned char *)dest;
+	src_c = (const unsigned char *)src;
+	while (i < len)
 	{
-		*dst_str = *src_str;
-		if (*src_str == (unsigned char)c)
-			return (++dst_str);
-		dst_str++;
-		src_str++;
+		dest_c[i] = src_c[i];
+		i++;
+		if (src_c[i - 1] == (unsigned char)c)
+			return (dest + i);
 	}
-	return (NULL);
+	return (0);
 }
