@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/08 22:07:17 by jujeong           #+#    #+#              #
-#    Updated: 2020/06/19 16:09:56 by jujeong          ###   ########.fr        #
+#    Updated: 2020/07/19 03:20:40 by yohlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,15 @@ FLAGS = -Wall -Wextra -Werror
 
 LIBFT = libft
 
-DIR_S = .
+DIR_S = srcs
 
 DIR_O = temporary
 
 HEADER = .
 
-SOURCES = minishell.c minishell_utils.c get_next_line.c get_next_line_utils.c
+SOURCES =	main.c utils.c get_next_line.c cd.c convert.c\
+			echo.c echo_utils.c env.c exec.c exit.c export.c set.c\
+			path.c pipe.c prompt.c pwd.c redirection.c unset.c var.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
@@ -47,7 +49,7 @@ clean:
 	make clean -C $(LIBFT)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) libft.a
 	make fclean -C $(LIBFT)
 
 re: fclean all

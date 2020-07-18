@@ -1,12 +1,13 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 14:56:36 by jujeong           #+#    #+#             */
-/*   Updated: 2020/07/14 23:37:21 by jujeong          ###   ########.fr       */
+/*   Updated: 2020/07/17 18:50:58 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +20,9 @@
 # include <unistd.h>
 # include <errno.h>
 # include <string.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
+# include <signal.h>
 # include "libft/libft.h"
 
 # define BUFFER_SIZE 2048
@@ -38,7 +42,7 @@ typedef struct	s_arg
 	char	**argv;
 	char	**envp;
 	char	*line;
-	char	echo[1024];
+	char	*echo;
 	char	pwd[1024];
 	int		pid;
 	char	**var;
@@ -64,14 +68,60 @@ int		ft_free(char **strs);
 char	*ft_strldup(char *src, int len);
 
 int		ft_cd(t_arg *a);
-int		ft_set_var(t_arg *a);
-char	*ft_find_var(t_arg *a, char *var, int len);
+
 void	ft_convert(t_arg *a);
+
+/*
+**		echo.c
+*/
+int		find_echo_newline(char **cmd);
+void	print_echo(t_arg *a, char *cmd);
+
+int		ft_echo(t_arg *a);
+
+/*
+**		echo_utils.c
+*/
+
+void	print_env(t_arg *a, char *cmd, int *i, char c);
+void	print_cmd(t_arg *a, char *cmd, int *i, char c);
+void	print_space(t_arg *a, char *cmd, int *i);
+void	print_quotes(t_arg *a, char *cmd, int *i);
+void	print_no_special_char(t_arg *a, char *cmd, int *i);
+
+
+int		ft_env(t_arg *a);
+
+int		ft_exec(t_arg *a);
+int		ft_exec_semi(t_arg *a);
+int		ft_built_in(t_arg *a, int ret);
+
+int		ft_exit(t_arg *a);
+
+int		ft_export(t_arg *a);
+
+int		ft_findpath(char **envp, char *line, t_child c);
+
+int		ft_pipe(t_arg *a);
+
+int		ft_child(t_arg *a);
+int		ft_prompt(t_arg *a);
+
+int		ft_pwd(t_arg *a, int newline);
+
 int		ft_redirection_out(t_arg *a);
 int		ft_redirection_in(t_arg *a);
 int		ft_rediretion(t_arg *a);
+
+int		ft_unset(t_arg *a);
+
+int		ft_set_var(t_arg *a);
+char	*ft_find_var(t_arg *a, char *var, int len);
+int		ft_check_var(char *line);
+int		ft_init_var(t_arg *a);
+
 int		ft_error_file(char *file);
-int		ft_pipe(t_arg *a);
+int		ft_free(char **strs);
 
 int		ft_print_var(t_arg *a); // 임시 확인용
 

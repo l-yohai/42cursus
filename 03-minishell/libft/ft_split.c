@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 20:00:07 by jujeong           #+#    #+#             */
-/*   Updated: 2020/06/15 16:15:28 by jujeong          ###   ########.fr       */
+/*   Updated: 2020/07/18 03:33:48 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,9 @@ char		**ft_split(char const *s, char c)
 {
 	char	**str;
 	int		len;
-	int		i;
-	int		j;
 
 	if (!s)
 		return (0);
-	i = 0;
-	j = 0;
 	if (!(str = ft_split_malloc(s, c)))
 		return (0);
 	if ((len = ft_split_save(str, s, c)) == -1)
