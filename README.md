@@ -12,14 +12,14 @@
 |		|[netwhat](./01-netwhat)			|N/A				|2020.04.19 ~ 2020.04.21	|100% :heavy_check_mark:	|level 1 - 66%	|
 |		|[ft_printf](./01-ft_printf)		|C					|2020.03.09 ~ 2020.05.09	|100% :heavy_check_mark:	|level 2 - 02%	|
 |:dizzy:|									|					|**= 2 months**				|							|				|
-|02		|[ft_server](./02-ft_server)		|docker				|2020.05.09 ~ 2020.05.22	|100% :heavy_check_mark:	|level 2 - 30%	|
+|02		|[ft_server](./02-ft_server)		|Docker				|2020.05.09 ~ 2020.05.22	|100% :heavy_check_mark:	|level 2 - 30%	|
 |		|Exam Rank 02						|C					|2020.05.26					|100% :heavy_check_mark:	|level 2 - 30%	|
 |		|[cub3d](./02-cub3d)				|C					|2020.05.23 ~ 2020.07.08	|101% :heavy_check_mark:	|level 3 - 09%	|
 |:dizzy:|									|					|**= 2 months**				|							|				|
-|03		|Exam Rank 03						|					|2020.07.10					|100% :heavy_check_mark:	|level 3 - 09%	|
+|03		|Exam Rank 03						|C					|2020.07.10					|100% :heavy_check_mark:	|level 3 - 09%	|
 |		|[libasm](./03-libasm)				|C, Assembly		|2020.07.09 ~ 2020.07.12	|100% :heavy_check_mark:	|level 3 - 30%	|
-|		|[ft_services](./03-ft_services)	|Docker, Kubernetes	|2020.07.13 ~				|							|				|
-|		|[minishell](./03-minishell)		|					|2020.07.15 ~				|							|				|
+|		|[minishell](./03-minishell)		|C					|2020.07.15 ~				|							|				|
+|		|[ft_services](./03-ft_services)	|Docker, Kubernetes	|							|							|				|
 |:dizzy:|									|					|							|							|				|
 |04		|Exam Rank 04						|					|							|							|				|
 |		|Philosophers						|					|							|							|				|
