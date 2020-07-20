@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 14:56:31 by jujeong           #+#    #+#             */
-/*   Updated: 2020/07/18 23:09:04 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/20 19:49:53 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	sig_handler(int signo)
 {
-	char	pwd[1024];
 	int		status;
 	int		pid;
 
@@ -28,11 +27,7 @@ void	sig_handler(int signo)
 	{
 		write(1, "\n", 1);
 		if (pid != 0)
-		{
-			getcwd(pwd, 1024);
-			write(1, pwd, ft_strlen(pwd));
-			write(1, " $ ", 3);
-		}
+			get_prompt_design();
 	}
 }
 
@@ -50,10 +45,11 @@ int		main(int argc, char *argv[], char *envp[])
 	{
 		ft_prompt(&a);
 		if (ft_strchr(a.line, ';'))
-			a.ret = ft_exec_semi(&a);
+			ft_exec_semi(&a);
 		else
-			a.ret = ft_exec(&a);
+			ft_exec(&a);
 		free(a.line);
+		free(a.echo);
 		a.line = 0;
 	}
 	return (0);

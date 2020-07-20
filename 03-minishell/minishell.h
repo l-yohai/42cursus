@@ -74,6 +74,9 @@ void	ft_convert(t_arg *a);
 /*
 **		echo.c
 */
+
+void	parse_env_quotes(t_arg *a, char *cmd, int *i, char c);
+void	parse_env(t_arg *a, char *cmd, int *i, char c);
 int		find_echo_newline(char **cmd);
 void	print_echo(t_arg *a, char *cmd);
 
@@ -83,7 +86,7 @@ int		ft_echo(t_arg *a);
 **		echo_utils.c
 */
 
-void	print_env(t_arg *a, char *cmd, int *i, char c);
+void	print_env(t_arg *a, char *cmd, int *i, int len, char c);
 void	print_cmd(t_arg *a, char *cmd, int *i, char c);
 void	print_space(t_arg *a, char *cmd, int *i);
 void	print_quotes(t_arg *a, char *cmd, int *i);
@@ -122,6 +125,7 @@ int		ft_init_var(t_arg *a);
 
 int		ft_error_file(char *file);
 int		ft_free(char **strs);
+void	get_prompt_design(void);
 
 int		ft_print_var(t_arg *a); // 임시 확인용
 

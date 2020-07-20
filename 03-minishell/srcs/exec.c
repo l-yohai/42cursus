@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:40:13 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/19 02:57:25 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/20 12:00:19 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,29 @@ int		ft_exec_semi(t_arg *a)
 	len = 0;
 	multi = a->line;
 	tmp = multi;
+	free(a->echo);
+	// printf("start %s\n", a->line);
 	while (ft_strchr(multi, ';'))
 	{
 		a->line = ft_strtok_s(multi, ";", &len);
+		// printf("1st %s\n", a->line);
 		if (!(a->echo = ft_calloc(len + 1, sizeof(char))))
 			return (-1);
 		ft_strlcpy(a->echo, a->line, len + 1);
 		multi += len;
+		//printf("|2nd %s|\n", multi);
 		ft_exec(a);
+		// printf(";a->ret : %d %s\n", a->ret, a->line);
 		free(a->line);
+		free(a->echo);
 	}
 	a->line = ft_strdup(multi);
 	if (!(a->echo = ft_calloc(len + 1, sizeof(char))))
 		return (-1);
 	ft_strlcpy(a->echo, a->line, ft_strlen(a->line) + 1);
+	// printf("|3rd %s|\n", a->line);
 	ft_exec(a);
+	// printf("1a->ret : %d\n", a->ret);
 	free(tmp);
 	return (0);
 }
@@ -86,15 +94,15 @@ int		ft_exec(t_arg *a)
 	if (ft_pipe(a))
 		return (0);
 	if ((ret = ft_built_in(a, -1)) != -1)
-		return (ret);
+		return (a->ret = ret);
 	a->pid = fork();
 	if (!a->pid)
 		ft_child(a);
 	else if (a->pid > 0)
 		waitpid(a->pid, &status, 0);
 	if (WIFEXITED(status))
-		return (WEXITSTATUS(status));
-	else if (WIFSIGNALED(status))
-		return (WTERMSIG(status));
+		a->ret = WEXITSTATUS(status);
+	else
+		a->ret = status;
 	return (0);
 }

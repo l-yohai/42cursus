@@ -6,32 +6,43 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 22:54:31 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/19 02:01:24 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/20 19:47:33 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env(t_arg *a, char *cmd, int *i, char c)
+void	print_env(t_arg *a, char *cmd, int *i, int len, char c)
 {
-	int		len;
 	char	*var;
 
-	len = 0;
-	if (c == '\"')
-		(*i)++;
-	while (ft_isalnum(cmd[*i + len + 1]) || cmd[*i + len + 1] == '?')
-		len++;
-	if ((var = ft_find_var(a,\
-			(c == '\"') ? ft_strldup(&cmd[*i], len + 1) : &cmd[*i], len)))
+	if ((var = ft_find_var(a, ft_strldup(&cmd[*i], len + 1), len)))
+	{
+		if (c == '$' && cmd[*i - 1] && cmd[*i - 1] == ' ')
+			write(a->fd, " ", 1);
 		write(a->fd, var, ft_strlen(var));
-	*i += (c == '\"') ? len + 2 : len;
+		*i += len;
+	}
+	else
+	{
+		*i += len;
+		if (c == '$' && cmd[*i + 1] == ' ')
+		{
+			(*i)++;
+			while (cmd[*i] == ' ')
+				(*i)++;
+			(*i)--;
+		}
+	}
 }
 
 void	print_cmd(t_arg *a, char *cmd, int *i, char c)
 {
-	while (cmd[++(*i)] != c)
+	while (cmd[*i] != c)
+	{
 		write(a->fd, &cmd[*i], 1);
+		(*i)++;
+	}
 }
 
 void	print_space(t_arg *a, char *cmd, int *i)
@@ -42,23 +53,31 @@ void	print_space(t_arg *a, char *cmd, int *i)
 
 	while (cmd[*i + j] == ' ')
 		j++;
-	if (cmd[*i + j] != '\0')
+	if (cmd[*i + j] != '\0' && cmd[*i + j] != '$')
 		write(a->fd, &cmd[*i], 1);
 	*i += j - 1;
 }
 
 void	print_quotes(t_arg *a, char *cmd, int *i)
 {
-	if (cmd[*i + 1] && cmd[*i + 1] == '$')
-		print_env(a, cmd, i, '\"');
-	else
+	if (cmd[*i + 1] && cmd[*i + 2] && cmd[*i + 1] == '\\' && cmd[*i + 2] == '$')
+	{
+		*i += 2;
 		print_cmd(a, cmd, i, '\"');
+	}
+	else if (ft_strchr(&cmd[*i], '$'))
+		parse_env_quotes(a, cmd, i, '\"');
+	else
+	{
+		(*i)++;
+		print_cmd(a, cmd, i, '\"');
+	}
 }
 
 void	print_no_special_char(t_arg *a, char *cmd, int *i)
 {
 	if (cmd[*i] == '$')
-		print_env(a, cmd, i, '$');
+		parse_env(a, cmd, i, '$');
 	else if (cmd[*i] == ' ')
 		print_space(a, cmd, i);
 	else

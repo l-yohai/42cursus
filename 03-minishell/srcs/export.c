@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:38:35 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/19 03:17:25 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/19 21:57:54 by jujeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_export_only(t_arg *a)
 		i++;
 	}
 	free(tmp);
-	return (1);
+	return (0);
 }
 
 int		ft_export(t_arg *a)
@@ -65,12 +65,13 @@ int		ft_export(t_arg *a)
 	char	**tmp;
 	char	**lines;
 
+	a->ret = 0;
 	lines = ft_split(a->line, ' ');
 	if (!lines[1])
 	{
 		ft_free(lines);
 		ft_export_only(a);
-		return (1);
+		return (0);
 	}
 	j = 0;
 	while (lines[++j])
@@ -155,5 +156,5 @@ int		ft_export(t_arg *a)
 		a->ret = 0;
 	}
 	ft_free(lines);
-	return (1);
+	return (a->ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:38:18 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/19 01:35:30 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/19 21:50:24 by jujeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		ft_cd_home(char **envp)
 		write(2, "cd: no such file or directory: ", 31);
 		write(2, envp[i] + 5, ft_strlen(envp[i] + 5));
 		write(2, "\n", 1);
+		return (1);
 	}
 	return (0);
 }
@@ -40,13 +41,18 @@ int		ft_cd(t_arg *a)
 
 	lines = ft_split(a->line, ' ');
 	if (!lines[1])
-		ft_cd_home(a->envp);
+	{
+		ft_free(lines);
+		return (ft_cd_home(a->envp));
+	}
 	else if ((chdir(lines[1]) == -1))
 	{
 		write(2, "cd: no such file or directory: ", 31);
 		write(2, lines[1], ft_strlen(lines[1]));
 		write(2, "\n", 1);
+		ft_free(lines);
+		return (1);
 	}
 	ft_free(lines);
-	return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/08 22:07:17 by jujeong           #+#    #+#              #
-#    Updated: 2020/07/19 03:20:40 by yohlee           ###   ########.fr        #
+#    Updated: 2020/07/20 19:48:28 by yohlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 NAME = minishell
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 LIBFT = libft
 
