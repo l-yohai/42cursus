@@ -86,7 +86,7 @@ int		ft_echo(t_arg *a);
 **		echo_utils.c
 */
 
-void	print_env(t_arg *a, char *cmd, int *i, int len, char c);
+void	move_space(char *cmd, int *i, char c);
 void	print_cmd(t_arg *a, char *cmd, int *i, char c);
 void	print_space(t_arg *a, char *cmd, int *i);
 void	print_quotes(t_arg *a, char *cmd, int *i);

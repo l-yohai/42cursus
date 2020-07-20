@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:37:22 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 19:49:55 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/20 20:10:09 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	parse_env(t_arg *a, char *cmd, int *i, char c)
 {
+	char	*var;
 	int		len;
 
 	len = 0;
@@ -24,7 +25,20 @@ void	parse_env(t_arg *a, char *cmd, int *i, char c)
 	if (len == 0)
 		write(1, &cmd[*i], 1);
 	else
-		print_env(a, cmd, i, len, c);
+	{
+		if ((var = ft_find_var(a, ft_strldup(&cmd[*i], len + 1), len)))
+		{
+			if (c == '$' && cmd[*i - 1] && cmd[*i - 1] == ' ')
+				write(a->fd, " ", 1);
+			write(a->fd, var, ft_strlen(var));
+			*i += len;
+		}
+		else
+		{
+			*i += len;
+			move_space(cmd, i, c);
+		}
+	}
 }
 
 void	parse_env_quotes(t_arg *a, char *cmd, int *i, char c)

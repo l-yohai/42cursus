@@ -6,33 +6,20 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 22:54:31 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 19:47:33 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/20 20:10:10 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env(t_arg *a, char *cmd, int *i, int len, char c)
+void	move_space(char *cmd, int *i, char c)
 {
-	char	*var;
-
-	if ((var = ft_find_var(a, ft_strldup(&cmd[*i], len + 1), len)))
+	if (c == '$' && cmd[*i + 1] == ' ')
 	{
-		if (c == '$' && cmd[*i - 1] && cmd[*i - 1] == ' ')
-			write(a->fd, " ", 1);
-		write(a->fd, var, ft_strlen(var));
-		*i += len;
-	}
-	else
-	{
-		*i += len;
-		if (c == '$' && cmd[*i + 1] == ' ')
-		{
+		(*i)++;
+		while (cmd[*i] == ' ')
 			(*i)++;
-			while (cmd[*i] == ' ')
-				(*i)++;
-			(*i)--;
-		}
+		(*i)--;
 	}
 }
 
