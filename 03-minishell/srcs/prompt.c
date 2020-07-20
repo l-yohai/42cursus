@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:49:10 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 11:58:54 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/20 22:55:51 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int		ft_prompt(t_arg *a)
 	if (!(a->echo = ft_calloc(ft_strlen(a->line) + 1, sizeof(char))))
 		exit(1);
 	ft_strlcpy(a->echo, a->line, ft_strlen(a->line) + 1);
-	// ft_convert(a);
 	a->fd = 1;
 	// ft_redirection_out(a);
 	return (0);

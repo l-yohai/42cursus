@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:43:55 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 08:52:19 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/20 22:39:34 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	convert_double_quotes(t_arg *a, int *i)
 	if (a->line[*i + j] && a->line[*i + j] == '\"')
 	{
 		j = 1;
-		while (a->line[*i] && a->line[*i + j])
+		while (a->line[*i + j] && a->line[*i + j])
 		{
 			if (a->line[*i + j] == '\"')
 				j = 2;

@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:40:13 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 12:00:19 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/20 23:26:37 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,38 +42,41 @@ int		ft_built_in(t_arg *a, int ret)
 	return (ret);
 }
 
-int		ft_exec_semi(t_arg *a)
+int	parse_semi(t_arg *a)
 {
 	char	*multi;
-	char	*tmp;
 	int		len;
 
-	len = 0;
 	multi = a->line;
-	tmp = multi;
-	free(a->echo);
-	// printf("start %s\n", a->line);
+	len = 0;
 	while (ft_strchr(multi, ';'))
 	{
 		a->line = ft_strtok_s(multi, ";", &len);
-		// printf("1st %s\n", a->line);
 		if (!(a->echo = ft_calloc(len + 1, sizeof(char))))
 			return (-1);
 		ft_strlcpy(a->echo, a->line, len + 1);
 		multi += len;
-		//printf("|2nd %s|\n", multi);
 		ft_exec(a);
-		// printf(";a->ret : %d %s\n", a->ret, a->line);
 		free(a->line);
 		free(a->echo);
 	}
 	a->line = ft_strdup(multi);
+	return (len);
+}
+
+int		ft_exec_semi(t_arg *a)
+{
+	char	*tmp;
+	int		len;
+
+	tmp = a->line;
+	free(a->echo);
+	if (!(len = parse_semi(a)))
+		return (-1);
 	if (!(a->echo = ft_calloc(len + 1, sizeof(char))))
 		return (-1);
 	ft_strlcpy(a->echo, a->line, ft_strlen(a->line) + 1);
-	// printf("|3rd %s|\n", a->line);
 	ft_exec(a);
-	// printf("1a->ret : %d\n", a->ret);
 	free(tmp);
 	return (0);
 }

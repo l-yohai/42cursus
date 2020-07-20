@@ -6,7 +6,7 @@
 #    By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/08 22:07:17 by jujeong           #+#    #+#              #
-#    Updated: 2020/07/20 19:48:28 by yohlee           ###   ########.fr        #
+#    Updated: 2020/07/20 23:27:01 by yohlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,9 @@ DIR_O = temporary
 HEADER = .
 
 SOURCES =	main.c utils.c get_next_line.c cd.c convert.c\
-			echo.c echo_utils.c env.c exec.c exit.c export.c set.c\
-			path.c pipe.c prompt.c pwd.c redirection.c unset.c var.c
+			echo.c echo_utils.c env.c exec.c exit.c export.c\
+			export_utils.c set.c path.c pipe.c prompt.c pwd.c\
+			redirection.c unset.c var.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
