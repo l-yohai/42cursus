@@ -20,7 +20,7 @@
 |03		|Exam Rank 03						|C					|2020.07.10					|100% :heavy_check_mark:	|level 3 - 09%	|
 |		|[libasm](./03-libasm)				|C, Assembly		|2020.07.09 ~ 2020.07.12	|100% :heavy_check_mark:	|level 3 - 30%	|
 |		|[minishell](./03-minishell)		|C					|2020.07.15 ~ 2020.07.21	|100% :heavy_check_mark:	|level 3 - 92%	|
-|		|[ft_services](./03-ft_services)	|Docker, Kubernetes	|							|							|				|
+|		|[ft_services](./03-ft_services)	|Docker, Kubernetes	|2020.07.22 ~				|							|				|
 |:dizzy:|									|					|							|							|				|
 |04		|Exam Rank 04						|					|							|							|				|
 |		|Philosophers						|					|							|							|				|
