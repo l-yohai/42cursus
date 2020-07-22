@@ -6,23 +6,19 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 14:56:36 by jujeong           #+#    #+#             */
-/*   Updated: 2020/07/20 22:51:58 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 12:34:45 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <errno.h>
 # include <string.h>
-# include <sys/stat.h>
-# include <sys/wait.h>
-# include <signal.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 # define BUFFER_SIZE 2048
 
@@ -49,6 +45,8 @@ typedef struct	s_arg
 	int			ret;
 	char		str[16];
 	int			fd;
+	int			len;
+	int			check;
 }				t_arg;
 
 typedef struct	s_pipe
@@ -77,21 +75,29 @@ void			ft_convert(t_arg *a);
 /*
 **				echo.c
 */
-void			parse_env(t_arg *a, char *cmd, int *i, char c);
-void			parse_env_quotes(t_arg *a, char *cmd, int *i, char c);
-int				find_echo_newline(char **cmd);
+
 void			print_echo(t_arg *a, char *cmd);
 int				ft_echo(t_arg *a);
+
+/*
+**				echo_print.c
+*/
+
+void			print_env(t_arg *a, char *cmd, int *i, char c);
+void			print_cmd(t_arg *a, char *cmd, int *i, char c);
+void			print_space(t_arg *a, char *cmd, int *i);
+void			print_quotes(t_arg *a, char *cmd, int *i);
+void			print_no_special_char(t_arg *a, char *cmd, int *i);
 
 /*
 **				echo_utils.c
 */
 
+int				find_echo_newline(char **cmd);
 void			move_space(char *cmd, int *i, char c);
-void			print_cmd(t_arg *a, char *cmd, int *i, char c);
-void			print_space(t_arg *a, char *cmd, int *i);
-void			print_quotes(t_arg *a, char *cmd, int *i);
-void			print_no_special_char(t_arg *a, char *cmd, int *i);
+void			check_space(t_arg *a, char *cmd, int *i, char c);
+void			parse_env(t_arg *a, char *cmd, int *i, char c);
+void			parse_env_quotes(t_arg *a, char *cmd, int *i, char c);
 
 /*
 **				env.c
@@ -200,6 +206,5 @@ int				ft_free(char **strs);
 
 int				ft_check_var(char *line);
 int				ft_init_var(t_arg *a);
-
 
 #endif

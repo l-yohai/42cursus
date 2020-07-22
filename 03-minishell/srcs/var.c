@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:40:41 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/19 02:47:31 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 08:36:40 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int		ft_check_var(char *line)
 	while (str[i])
 	{
 		if ((str[i] >= '0' && str[i] <= '0') || str[i] == '_' || \
-			(str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
+			(str[i] >= 'a' && str[i] <= 'z') ||\
+			(str[i] >= 'A' && str[i] <= 'Z'))
 			i++;
 		else
 		{

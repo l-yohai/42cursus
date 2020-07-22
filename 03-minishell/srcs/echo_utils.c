@@ -6,11 +6,40 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 22:54:31 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 20:10:10 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 12:33:38 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int		find_echo_newline(char **cmd)
+{
+	int	newline;
+
+	newline = 0;
+	while (**cmd)
+	{
+		if (ft_strnstr(*cmd, "-n", 2))
+		{
+			if (*(*cmd + 2) && *(*cmd + 2) == ' ')
+			{
+				newline++;
+				*cmd = *cmd + 3;
+			}
+			else if (!*(*cmd + 2))
+			{
+				newline++;
+				*cmd = *cmd + 2;
+				break ;
+			}
+			else
+				break ;
+		}
+		else
+			break ;
+	}
+	return (newline);
+}
 
 void	move_space(char *cmd, int *i, char c)
 {
@@ -23,50 +52,42 @@ void	move_space(char *cmd, int *i, char c)
 	}
 }
 
-void	print_cmd(t_arg *a, char *cmd, int *i, char c)
+void	check_space(t_arg *a, char *cmd, int *i, char c)
 {
-	while (cmd[*i] != c)
+	if (a->check == 2 && c == '$' && *i > 0 && cmd[*i - 1] == ' ')
+		write(a->fd, " ", 1);
+}
+
+void	parse_env(t_arg *a, char *cmd, int *i, char c)
+{
+	a->len = 0;
+	while (ft_isalnum(cmd[*i + a->len + 1]))
+		a->len++;
+	if (cmd[*i + 1] == '?' || ft_isdigit(cmd[*i + 1]))
+		a->len = 1;
+	if (a->len == 0)
 	{
-		write(a->fd, &cmd[*i], 1);
+		check_space(a, cmd, i, c);
+		write(1, &cmd[*i], 1);
+		a->check = 0;
+	}
+	else
+		print_env(a, cmd, i, c);
+}
+
+void	parse_env_quotes(t_arg *a, char *cmd, int *i, char c)
+{
+	while (ft_strchr(&cmd[*i], '$'))
+	{
+		while (cmd[*i] != '$')
+		{
+			if (cmd[*i] != c)
+				write(a->fd, &cmd[*i], 1);
+			(*i)++;
+		}
+		parse_env(a, cmd, i, c);
 		(*i)++;
 	}
-}
-
-void	print_space(t_arg *a, char *cmd, int *i)
-{
-	int	j;
-
-	j = 0;
-
-	while (cmd[*i + j] == ' ')
-		j++;
-	if (cmd[*i + j] != '\0' && cmd[*i + j] != '$')
-		write(a->fd, &cmd[*i], 1);
-	*i += j - 1;
-}
-
-void	print_quotes(t_arg *a, char *cmd, int *i)
-{
-	if (cmd[*i + 1] && cmd[*i + 2] && cmd[*i + 1] == '\\' && cmd[*i + 2] == '$')
-	{
-		*i += 2;
-		print_cmd(a, cmd, i, '\"');
-	}
-	else if (ft_strchr(&cmd[*i], '$'))
-		parse_env_quotes(a, cmd, i, '\"');
-	else
-	{
-		(*i)++;
-		print_cmd(a, cmd, i, '\"');
-	}
-}
-
-void	print_no_special_char(t_arg *a, char *cmd, int *i)
-{
-	if (cmd[*i] == '$')
-		parse_env(a, cmd, i, '$');
-	else if (cmd[*i] == ' ')
-		print_space(a, cmd, i);
-	else
-		write(a->fd, &cmd[*i], 1);
+	if (cmd[*i] != c)
+		print_cmd(a, cmd, i, c);
 }

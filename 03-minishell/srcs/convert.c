@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:43:55 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 22:39:34 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 17:05:02 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	convert_single_quotes(t_arg *a, int *i)
 	j = 1;
 	while (a->line[*i + j] && a->line[*i + j] != '\'')
 		j++;
-	if (a->line[*i + j] == '\'')
+	if (a->line[*i + j] && a->line[*i + j] == '\'')
 	{
 		j = 1;
-		while (a->line[*i] && a->line[*i + j])
+		while (a->line[*i + j])
 		{
 			if (a->line[*i + j] == '\'')
 			{
@@ -88,7 +88,7 @@ void	convert_env(t_arg *a, int *i)
 
 void	ft_convert(t_arg *a)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (a->line[i])

@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:44:31 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/17 18:49:08 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 11:51:04 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_findpath(char **envp, char *line, t_child c)
 		if (!(ft_strncmp(envp[c.i], "PATH=", 5)))
 			break ;
 		else if (!envp[c.i])
-			exit(-1); //PATH가 없는 경우
+			exit(-1);
 	}
 	c.paths = ft_split(envp[c.i] + 5, ':');
 	c.lines = ft_split(line, ' ');

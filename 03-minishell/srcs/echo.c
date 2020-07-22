@@ -6,86 +6,11 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:37:22 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 20:10:09 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 12:33:42 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	parse_env(t_arg *a, char *cmd, int *i, char c)
-{
-	char	*var;
-	int		len;
-
-	len = 0;
-	while (ft_isalnum(cmd[*i + len + 1]))
-		len++;
-	if (cmd[*i + 1] == '?' || ft_isdigit(cmd[*i + 1]))
-		len = 1;
-	if (len == 0)
-		write(1, &cmd[*i], 1);
-	else
-	{
-		if ((var = ft_find_var(a, ft_strldup(&cmd[*i], len + 1), len)))
-		{
-			if (c == '$' && cmd[*i - 1] && cmd[*i - 1] == ' ')
-				write(a->fd, " ", 1);
-			write(a->fd, var, ft_strlen(var));
-			*i += len;
-		}
-		else
-		{
-			*i += len;
-			move_space(cmd, i, c);
-		}
-	}
-}
-
-void	parse_env_quotes(t_arg *a, char *cmd, int *i, char c)
-{
-	while (ft_strchr(&cmd[*i], '$'))
-	{
-		while (cmd[*i] != '$')
-		{
-			if (cmd[*i] != c)
-				write(a->fd, &cmd[*i], 1);
-			(*i)++;
-		}
-		parse_env(a, cmd, i, c);
-		(*i)++;
-	}
-	if (cmd[*i] != c)
-		print_cmd(a, cmd, i, c);
-}
-
-int		find_echo_newline(char **cmd)
-{
-	int	newline;
-
-	newline = 0;
-	while (**cmd)
-	{
-		if (ft_strnstr(*cmd, "-n", 2))
-		{
-			if (*(*cmd + 2) && *(*cmd + 2) == ' ')
-			{
-				newline++;
-				*cmd = *cmd + 3;
-			}
-			else if (!*(*cmd + 2))
-			{
-				newline++;
-				*cmd = *cmd + 2;
-				break ;
-			}
-			else
-				break ;
-		}
-		else
-			break ;
-	}
-	return (newline);
-}
 
 void	print_echo(t_arg *a, char *cmd)
 {

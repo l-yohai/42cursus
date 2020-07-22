@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:49:10 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 22:55:51 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 17:19:50 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ void	get_prompt_design(void)
 
 int		ft_prompt(t_arg *a)
 {
-	//get_prompt_design();
+	get_prompt_design();
 	if (!get_next_line(0, &(a->line)))
 		exit(1);
 	if (!(a->echo = ft_calloc(ft_strlen(a->line) + 1, sizeof(char))))
 		exit(1);
 	ft_strlcpy(a->echo, a->line, ft_strlen(a->line) + 1);
 	a->fd = 1;
-	// ft_redirection_out(a);
 	return (0);
 }

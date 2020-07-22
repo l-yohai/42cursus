@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 23:07:01 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/18 23:07:06 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 08:34:11 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strtok_s(char *str, char *sep, int *size)
 			if (!sep[j])
 			{
 				*size = i;
-				cpy = (char *)malloc(tmp+ 1);
+				cpy = (char *)malloc(tmp + 1);
 				cpy[tmp] = '\0';
 				while (--tmp > -1)
 					cpy[tmp] = str[tmp];

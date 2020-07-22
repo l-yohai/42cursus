@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jujeong <jujeong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:38:18 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/19 21:50:24 by jujeong          ###   ########.fr       */
+/*   Updated: 2020/07/21 08:36:56 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_cd_home(char **envp)
 			break ;
 		i++;
 		if (!envp[i])
-			return(-1);
+			return (-1);
 	}
 	if ((chdir(envp[i] + 5) == -1))
 	{

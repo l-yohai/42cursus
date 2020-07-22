@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 20:37:35 by jujeong           #+#    #+#             */
-/*   Updated: 2020/07/20 22:48:07 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 08:37:27 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*combine_str(char *s1, char *s2)
 	int		j;
 	int		len;
 	char	*res;
+
 	if (!s1)
 		return (ft_strdup(s2));
 	if (!s2)
@@ -50,6 +51,7 @@ int		read_lines(int fd, char **line, char **lines, char *buf)
 {
 	char	*new_line;
 	int		bytes;
+
 	while ((bytes = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[bytes] = '\0';
@@ -97,6 +99,7 @@ int		get_next_line(int fd, char **line)
 	char		*new_line;
 	char		*buf;
 	int			ret;
+
 	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, NULL, 0) < 0)
 		return (-1);
 	if (lines && (new_line = ft_strchr(lines, '\n')))

@@ -6,7 +6,7 @@
 /*   By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 18:40:13 by yohlee            #+#    #+#             */
-/*   Updated: 2020/07/20 23:26:37 by yohlee           ###   ########.fr       */
+/*   Updated: 2020/07/21 11:51:23 by yohlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_built_in(t_arg *a, int ret)
 	lines = ft_split(a->line, ' ');
 	a->fd = ft_redirection_out(a);
 	if (!ft_redirection_in(a))
-		return (1); // 수정필요
+		return (1);
 	if (!(ft_strcmp(lines[0], "echo")))
 		ret = ft_echo(a);
 	else if (!(ft_strcmp(lines[0], "cd")))
@@ -27,22 +27,20 @@ int		ft_built_in(t_arg *a, int ret)
 	else if (!(ft_strcmp(lines[0], "pwd")))
 		ret = ft_pwd(a, 1);
 	else if (!(ft_strcmp(lines[0], "export")))
-		ret = ft_export(a);//필요
+		ret = ft_export(a);
 	else if (!(ft_strcmp(lines[0], "unset")))
 		ret = ft_unset(a);
 	else if (!(ft_strcmp(lines[0], "env")))
 		ret = ft_env(a);
 	else if (!(ft_strcmp(lines[0], "exit")))
 		ret = ft_exit(a);
-	// else if (!(ft_strcmp(lines[0], "set")))
-	// 	ret = ft_print_var(a); // set.c
 	else if (ft_strchr(lines[0], '='))
 		ret = ft_set_var(a);
 	ft_free(lines);
 	return (ret);
 }
 
-int	parse_semi(t_arg *a)
+int		parse_semi(t_arg *a)
 {
 	char	*multi;
 	int		len;

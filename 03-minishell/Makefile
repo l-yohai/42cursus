@@ -6,7 +6,7 @@
 #    By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/08 22:07:17 by jujeong           #+#    #+#              #
-#    Updated: 2020/07/20 23:27:01 by yohlee           ###   ########.fr        #
+#    Updated: 2020/07/21 17:19:04 by yohlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 NAME = minishell
 
-FLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror
 
 LIBFT = libft
 
@@ -22,12 +22,12 @@ DIR_S = srcs
 
 DIR_O = temporary
 
-HEADER = .
+HEADER = includes
 
 SOURCES =	main.c utils.c get_next_line.c cd.c convert.c\
-			echo.c echo_utils.c env.c exec.c exit.c export.c\
-			export_utils.c set.c path.c pipe.c prompt.c pwd.c\
-			redirection.c unset.c var.c
+			echo.c echo_print.c echo_utils.c env.c exec.c\
+			exit.c export.c export_utils.c set.c path.c pipe.c\
+			prompt.c pwd.c redirection.c unset.c var.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
