@@ -22,7 +22,7 @@ eval $(minikube -p minikube docker-env)
 docker run -it -p 80:80 -p 443:443 alpine
 # update and import modules
 / \# apk update && apk add nginx openssh openssl
-# generate certification and key
+# create certification and key
 / \# mkdir -p /etc/nginx/ssl
 / \# openssl req -newkey rsa:4096 -x509 -days 365 -nodes \
 			-out /etc/nginx/ssl/nginx.crt \
@@ -38,24 +38,31 @@ docker run -it -p 80:80 -p 443:443 alpine
 / \# nginx -g "daemon off;"
 ```
 
-### ftps with docker
+### nginx
 ```Shell
-# update and import modules
-/ \# apk update
-/ \# apk add openssl
-/ \# apk add vsftpd
-/ \# apk add curl
-# generate certification and key
-/ \# mkdir -p /etc/ssl/
-/ \# openssl req -newkey rsa:4096 -x509 -days 365 -nodes \
-			-out /etc/ssl/vsftpd.crt \
-			-keyout /etc/ssl/vsftpd.key \
-			-subj "/C=KR/ST=SEOUL/L=SEOUL/O=42SEOUL/OU=yohlee/CN=FTPS"
-# generate user
-/ \# adduser -D -h /var/ftp "admin"
-/ \# echo "admin:admin" | chpasswd
-# make directory for running nginx and run server
-/ \# mkdir -p /var/ftp
-/ \# vsftpd /etc/vsftpd/vsftpd.conf 
+# build ftps image and run
+cd /srcs/nginx
+docker build -t nginx-image .
+kubectl apply -f nginx.yaml
+```
+
+### ftps
+
+##### reference
+https://github.com/lhauspie/docker-vsftpd-alpine
+
+```Shell
+# build ftps image and run
+cd /srcs/ftps
+docker build -t ftps-image .
+kubectl apply -f vsftpd.yaml
+# file upload
+curl ftp://EXTERNAL-IP:21 --ssl -k -u admin:admin -T filename
+# file download
+curl ftp://EXTERNAL-IP:21/filename --ssl -k -u admin:admin -o ./filename
+# check
+kubectl get pods
+kubectl exec -it ftps-pods-name -- sh 
+/ \# cd home/vsftpd/user/
 ```
 
