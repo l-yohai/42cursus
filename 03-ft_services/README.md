@@ -65,4 +65,9 @@ kubectl get pods
 kubectl exec -it ftps-pods-name -- sh 
 / \# cd home/vsftpd/user/
 ```
+### mysql
 
+
+/tmp # mysqld --user=root --bootstrap < /tmp/init_root
+2020-07-26 23:24:59 0 [Note] mysqld (mysqld 10.4.13-MariaDB-log) starting as process 213 ...
+2020-07-26 23:24:59 0 [ERROR] mysqld: Can't lock aria control file '/var/lib/mysql/aria_log_control' for exclusive use, error: 11. Will retry for 30 seconds
