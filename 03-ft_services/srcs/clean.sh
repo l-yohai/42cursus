@@ -22,3 +22,8 @@ echo "phpmyadmin delete"
 cd phpmyadmin
 kubectl delete -f phpmyadmin.yaml
 cd ..
+
+echo "wordpress delete"
+cd wordpress
+kubectl delete -f wordpress.yaml
+cd ..

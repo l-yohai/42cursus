@@ -31,8 +31,8 @@ define( 'DB_PASSWORD', 'admin' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'mysql' );
-define( 'WP_HOME', '/wordpress/' );
-define( 'WP_SITEURL', '/wordpress/' );
+define( 'WP_HOME', 'http://CHANGETOIP:5050/' );
+define( 'WP_SITEURL', 'http://CHANGETOIP:5050/' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

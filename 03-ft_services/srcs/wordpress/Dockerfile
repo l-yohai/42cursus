@@ -10,10 +10,10 @@ RUN tar -xvf latest.tar.gz
 RUN rm -f latest.tar.gz
 RUN mv wordpress /etc/
 
-COPY srcs/wp-config.php /etc/wordpress/
-COPY srcs/wordpress.sql /tmp/
-COPY srcs/launch-wordpress.sh /tmp/
-COPY srcs/entrypoint.sh /tmp/
+COPY wp-config.php /etc/wordpress/
+COPY wordpress.sql /tmp/
+COPY launch-wordpress.sh /tmp/
+COPY entrypoint.sh /tmp/
 
 EXPOSE 5050
 
