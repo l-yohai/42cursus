@@ -16,5 +16,4 @@ COPY launch-wordpress.sh /tmp/
 COPY entrypoint.sh /tmp/
 
 EXPOSE 5050
-
 ENTRYPOINT ["sh", "/tmp/entrypoint.sh"]

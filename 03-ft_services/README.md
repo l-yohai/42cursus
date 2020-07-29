@@ -171,3 +171,52 @@ My Root User
 * user: admin
 * pass: lLp)3y6mXqwaZA(s3N
 ---
+### influxdb
+
+* preparation
+```Shell
+docker run -it alpine
+/ \# apk add influxdb
+/ \# vi /etc/influxdb.conf
+copy and paste
+```
+
+```Shell
+# build influxdb image and run
+cd /srcs/influxdb
+docker build -t influxdb-image .
+kubectl apply -f influxdb.yaml
+```
+---
+### telegraf
+
+* preparation
+```Shell
+docker run -it alpine
+/ \# apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/
+/ \# vi /etc/telegraf.conf
+copy and paste
+```
+
+```Shell
+# build telegraf image and run
+cd /srcs/telegraf
+docker build -t telegraf-image .
+kubectl apply -f telegraf.yaml
+```
+---
+### grafana
+* preparation
+```Shell
+docker run -it -p 30000:3000 alpine /bin/sh
+/ \# apk add grafana --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --no-cache
+/ \# /usr/sbin/grafana-server --homepath=/usr/share/grafana
+
+if you\'re using kubernetes, check `minikube docker-env` command and move CONTAINER_IP:30000
+
+* id: admin
+* pwd: admin
+
+docker cp CONTAINER_ID:/usr/share/grafana/conf .
+```
+

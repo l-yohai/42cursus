@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ftps
+  name: ftps-service
   labels:
     app: ftps
 spec:
@@ -11,37 +11,37 @@ spec:
   ports:
     - port: 20
       targetPort: 20
-      name: ftp-data
+      name: data
       protocol: TCP
     - port: 21
-      name: ftp-command
+      name: command
       targetPort: 21
       protocol: TCP
     - port: 21100
-      name: passive0
+      name: passive-port0
       targetPort: 21100
       protocol: TCP
     - port: 21101
-      name: passive1
+      name: passive-port1
       targetPort: 21101
       protocol: TCP
     - port: 21102
-      name: passive2
+      name: passive-port2
       targetPort: 21102
       protocol: TCP
     - port: 21103
-      name: passive3
+      name: passive-port3
       targetPort: 21103
       protocol: TCP
     - port: 21104
-      name: passive4
+      name: passive-port4
       targetPort: 21104
       protocol: TCP
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ftps
+  name: ftps-deployment
   labels:
     app: ftps
 spec:
@@ -50,11 +50,12 @@ spec:
       app: ftps
   template:
     metadata:
+      name: ftps-pod
       labels:
         app: ftps
     spec:
       containers:
-      - name: ftps
+      - name: ftps-container
         image: ftps-image
         imagePullPolicy: Never
         ports:

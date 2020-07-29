@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: influxdb-config
+  labels:
+    app: influxdb
+data:
+  influxdb.conf: |
+    [meta]
+      dir = "/var/lib/influxdb/meta"
+      bind-address=":8088"
+    [data]
+      dir = "/var/lib/influxdb/data"
+      wal-dir = "/var/lib/influxdb/wal"
+      series-id-set-cache-size = 100
+    [coordinator]
+    [retention]
+    [shard-precreation]
+    [monitor]
+    [admin]
+    [http]
+      enabled = true
+      bind-address = ":8086"
+    [logging]
+    [subscriber]
+    [[graphite]]
+    [[collectd]]
+    [[opentsdb]]
+    [continuous_queries]
+    [tls]
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: influxdb-secret
+  labels:
+    app: influxdb
+type: Opaque
+stringData:
+  INFLUXDB_DB: telegraf
+  INFLUXDB_ADMIN_USER: admin
+  INFLUXDB_ADMIN_PASSWORD: admin
+  INFLUXDB_USER: user
+  INFLUXDB_USER_PASSWORD: pass

@@ -1,7 +1,7 @@
-echo "metalLB delete"
-cd metallb
-kubectl delete -f metallb.yaml
-cd ..
+# echo "metalLB delete"
+# cd metallb
+# kubectl delete -f metallb.yaml
+# cd ..
 
 echo "nginx delete"
 cd nginx
