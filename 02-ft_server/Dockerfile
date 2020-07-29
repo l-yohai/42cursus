@@ -6,11 +6,11 @@
 #    By: yohlee <yohlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/11 17:51:07 by yohlee            #+#    #+#              #
-#    Updated: 2020/07/22 19:44:22 by yohlee           ###   ########.fr        #
+#    Updated: 2020/07/29 06:18:08 by yohlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM yohan9612/ft_server
+FROM debian:buster
 MAINTAINER yohlee <yohlee@student.42seoul.kr>
 
 # install

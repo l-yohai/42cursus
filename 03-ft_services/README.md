@@ -1,5 +1,5 @@
 # ft_services
-
+---
 ### settings
 ```shell
 # init docker
@@ -15,7 +15,7 @@ eval $(minikube -p minikube docker-env)
 # start ft_services
 ./srcs/setup.sh
 ```
-
+---
 ### nginx with docker
 ```shell
 # build nginx image
@@ -37,7 +37,7 @@ docker run -it -p 80:80 -p 443:443 alpine
 / \# mkdir -p /var/run/nginx
 / \# nginx -g "daemon off;"
 ```
-
+---
 ### nginx
 ```Shell
 # build ftps image and run
@@ -45,7 +45,7 @@ cd /srcs/nginx
 docker build -t nginx-image .
 kubectl apply -f nginx.yaml
 ```
-
+---
 ### ftps
 
 ##### reference
@@ -65,9 +65,109 @@ kubectl get pods
 kubectl exec -it ftps-pods-name -- sh 
 / \# cd home/vsftpd/user/
 ```
+---
 ### mysql
+```Shell
+# build mysql image and run
+cd /srcs/mysql
+docker build -t mysql-image .
+kubectl apply -f mysql.yaml
+# check generated wordpress table
+kubectl exec -it mysql-pods-name -- sh 
+/ \# cd var/lib/mysql/wordpress
+```
+---
+### phpmyadmin
+```Shell
+# build phpmyadmin image and run
+cd /srcs/phpmyadmin
+docker build -t phpmyadmin-image .
+kubectl apply -f phpmyadmin.yaml
+# check login success
+minikube dashboard
 
+move `EXTERNALIP:phpmyadmin-PORT/`
+and check `wordpress table`
+```
+---
+### wordpress
+```Shell
+# build wordpress image and run
+cd /srcs/wordpress
+```
 
-/tmp # mysqld --user=root --bootstrap < /tmp/init_root
-2020-07-26 23:24:59 0 [Note] mysqld (mysqld 10.4.13-MariaDB-log) starting as process 213 ...
-2020-07-26 23:24:59 0 [ERROR] mysqld: Can't lock aria control file '/var/lib/mysql/aria_log_control' for exclusive use, error: 11. Will retry for 30 seconds
+At first, build dockerfile without `wordpress.sql` file.
+
+** Dockerfile
+```Shell
+FROM alpine:latest
+MAINTAINER yohlee <yohlee@student.42seoul.kr>
+
+RUN apk update
+RUN apk add php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib\
+			php7-curl php7-mbstring php7-json php7-session mysql-client
+
+RUN wget https://wordpress.org/latest.tar.gz
+RUN tar -xvf latest.tar.gz
+RUN rm -f latest.tar.gz
+RUN mv wordpress /etc/
+
+COPY wp-config.php /etc/wordpress/
+COPY entrypoint.sh /tmp/
+
+EXPOSE 5050
+ENTRYPOINT ["sh", "/tmp/entrypoint.sh"]
+```
+
+** wp-config.php
+```php
+...
+...
+
+define( 'DB_NAME', 'wordpress' );
+
+/** MySQL database username */
+define( 'DB_USER', 'USER' );
+
+/** MySQL database password */
+define( 'DB_PASSWORD', 'PASSWORD' );
+
+/** MySQL hostname */
+define( 'DB_HOST', 'YOUR_MYSQL_SERVICE_NAME' );
+define( 'WP_HOME', 'http://YOUR_EXTERNAL_IP:5050/' );
+define( 'WP_SITEURL', 'http://YOUR_EXTERNAL_IP:5050/' );
+
+...
+...
+```
+
+** entrypoint.sh
+```Shell
+#!/bin/sh
+
+sleep 5
+# sh /tmp/init-wordpress.sh # here
+php -S 0.0.0.0:5050 -t /etc/wordpress/
+until [ $? != 1 ]
+do
+	php -S 0.0.0.0:5050 -t /etc/wordpress/
+done
+```
+
+```Shell
+docker build -t wordpress-image .
+kubectl apply -f wordpress.yaml
+```
+
+And then 
+1. connect wordpress in your web.
+2. install wordpress.
+3. create users and post.
+4. move phpmyadmin and check your database
+5. export your `wordpress.sql`
+6. execute the rest files.
+
+My Root User
+* user: admin
+* pass: lLp)3y6mXqwaZA(s3N
+---
