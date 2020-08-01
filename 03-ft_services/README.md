@@ -230,3 +230,59 @@ if you\'re using kubernetes, check `minikube docker-env` command and move CONTAI
 docker cp CONTAINER_ID:/usr/share/grafana/conf .
 ```
 - 도커 컨테이너에서 grafana의 conf폴더를 가져온 이후에, provisioning의 datasource와 dashboards 폴더의 yaml파일을 이용한다.
+
+** grafana dashboard init파일 만들기
+쿠버네티스 컨테이너를 모두 실행시킨 뒤 아래의 도커파일과 yaml파일로 grafana 컨테이너에 접속한다.
+
+```Shell
+FROM alpine:latest
+MAINTAINER yohlee <yohlee@student.42seoul.kr>
+
+RUN apk add grafana --repository=http://dl-3.alpinelinux.org/alpine/edge/testing/
+
+COPY entrypoint.sh /tmp/
+
+EXPOSE 3000
+
+ENTRYPOINT ["sh", "/tmp/entrypoint.sh"]
+```
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+  labels:
+    app: grafana
+spec:
+  selector:
+    app: grafana
+  type: LoadBalancer
+  ports:
+    - port: 3000
+      name: port
+      targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deployment
+  labels:
+    app: grafana
+spec:
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      name: grafana-pod
+      labels:
+        app: grafana
+    spec:
+      containers:
+        - name: grafana-container
+          image: grafana-image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000
+              name: grafana-port
+```
