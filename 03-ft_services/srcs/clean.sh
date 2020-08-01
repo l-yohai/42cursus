@@ -1,7 +1,7 @@
-# echo "metalLB delete"
-# cd metallb
-# kubectl delete -f metallb.yaml
-# cd ..
+echo "metalLB delete"
+cd metallb
+kubectl delete -f metallb.yaml
+cd ..
 
 echo "nginx delete"
 cd nginx
@@ -26,4 +26,14 @@ cd ..
 echo "wordpress delete"
 cd wordpress
 kubectl delete -f wordpress.yaml
+cd ..
+
+echo "influxdb delete"
+cd influxdb
+kubectl delete -f influxdb.yaml
+cd ..
+
+echo "telegraf delete"
+cd telegraf
+kubectl delete -f telegraf.yaml
 cd ..

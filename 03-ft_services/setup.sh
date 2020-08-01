@@ -1,15 +1,15 @@
-# minikube start --driver=virtualbox
-# #./42toolbox/init_docker
-# eval $(minikube -p minikube docker-env)
+minikube start --driver=virtualbox
+#./42toolbox/init_docker
+eval $(minikube -p minikube docker-env)
 
-# echo "metalLB manifest"
-# kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
-# kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
-# kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+echo "metalLB manifest"
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 
-# cd srcs/metallb
-# kubectl apply -f metallb.yaml
-# cd ../..
+cd srcs/metallb
+kubectl apply -f metallb.yaml
+cd ../..
 
 cd srcs/nginx/
 docker build -t nginx-image .
@@ -32,6 +32,18 @@ kubectl apply -f phpmyadmin.yaml
 cd ../..
 
 cd srcs/wordpress
-# docker build -t wordpress-image .
+docker build -t wordpress-image .
 kubectl apply -f wordpress.yaml
+cd ../..
+
+cd srcs/influxdb
+docker build -t influxdb-image .
+kubectl apply -f influxdb_config.yaml
+kubectl apply -f influxdb.yaml
+cd ../..
+
+cd srcs/telegraf
+docker build -t telegraf-image .
+kubectl apply -f telegraf_config.yaml
+kubectl apply -f telegraf.yaml
 cd ../..

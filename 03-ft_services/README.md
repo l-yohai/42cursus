@@ -173,6 +173,11 @@ My Root User
 ---
 ### influxdb
 
+- influxdb는 시계열데이터를 저장하는 데이터베이스로, 데이터를 수집하는 telegraf, 대시보드화 시키는 grafana와 주로 함께 사용된다.
+- 효율성이 좋기 때문에 influxdb는 60%가 넘는 점유율을 차지하고 있으며, 점점 사용량이 많아지는 추세임. 기본적으로 8086 포트와 연결된다.
+- 쿠버네티스를 이용하여 influxdb를 구축하기 위해서는, 알파인 리눅스 환경에서 influxdb를 실행 후 conf파일을 준비해놓을 필요가 있다. `/etc/infuxdb.conf/`
+- mysql과 동일하게 persistent volume claim을 이용하여 telegraf와 grafana등 다른 컨테이너에서 접속할 수 있게끔 설정을 해주어야 한다. 미리 준비해놓은 conf파일을 컨피그맵으로 설정하고, yaml파일에서 환경변수들을 이용하여 서버를 초기화한다.
+
 * preparation
 ```Shell
 docker run -it alpine
@@ -190,6 +195,9 @@ kubectl apply -f influxdb.yaml
 ---
 ### telegraf
 
+- telegraf는 데이터 수집을 위한 컨테이너이다. 위의 과정까지 진행했으면, influxdb에 telegraf라는 '빈' 데이터베이스가 만들어져있는데, 이 telegraf 컨테이너를 통해 수집한 데이터를 influxdb에 저장시켜줄 것이다.
+- alpine linux환경에서 telegraf를 install한 뒤 conf파일을 이용하여 수집하려는 데이터의 input과 수집한 데이터를 저장할 output을 지정해야 한다.
+
 * preparation
 ```Shell
 docker run -it alpine
@@ -206,6 +214,8 @@ kubectl apply -f telegraf.yaml
 ```
 ---
 ### grafana
+- grafana의 dashboard에서는 수집하고 저장한 시계열 데이터를 시각화하여 볼 수 있다.
+- 쿠버네티스로 grafana를 이용하기 위해서는 아래와 같이 /usr/share/grafana/conf 폴더를 미리 준비한 이후 yaml파일을 통해 config 파일들을 수정해야 한다.
 * preparation
 ```Shell
 docker run -it -p 30000:3000 alpine /bin/sh
@@ -219,4 +229,4 @@ if you\'re using kubernetes, check `minikube docker-env` command and move CONTAI
 
 docker cp CONTAINER_ID:/usr/share/grafana/conf .
 ```
-
+- 도커 컨테이너에서 grafana의 conf폴더를 가져온 이후에, provisioning의 datasource와 dashboards 폴더의 yaml파일을 이용한다.
