@@ -10,28 +10,18 @@ spec:
       app: telegraf
   template:
     metadata:
+      name: telegraf-pod
       labels:
         app: telegraf
     spec:
       containers:
-      - name: telegraf-container
-        image: telegraf-image
-        imagePullPolicy: Never
-        volumeMounts:
-        - name: telegraf-config
-          subPath: telegraf.conf
-          mountPath: /etc/telegraf/telegraf.conf
-          readOnly: true
-        - name: docker-socket
-          mountPath: /var/run/docker.sock
-        envFrom:
-        - secretRef:
-            name: telegraf-secret
+        - name: telegraf-container
+          image: telegraf-image
+          imagePullPolicy: Never
+          volumeMounts:
+            - name: docker-sock
+              mountPath: /var/run/docker.sock
       volumes:
-      - name: telegraf-config
-        configMap:
-          name: telegraf-config
-      - name: docker-socket
-        hostPath:
-          path: /var/run/docker.sock
-          type: Socket
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
