@@ -9,8 +9,8 @@ spec:
     app: grafana
   type: LoadBalancer
   ports:
-    - port: 3000
-      name: port
+    - protocol: TCP
+      port: 3000
       targetPort: 3000
 ---
 apiVersion: apps/v1
@@ -33,6 +33,12 @@ spec:
         - name: grafana-container
           image: grafana-image
           imagePullPolicy: Never
-          ports:
-            - containerPort: 3000
-              name: grafana-port
+          volumeMounts:
+            - name: grafana-data
+              subPath: grafana.ini
+              mountPath: /etc/grafana/grafana.ini
+              readOnly: true
+      volumes:
+        - name: grafana-data
+          configMap:
+            name: grafana-config

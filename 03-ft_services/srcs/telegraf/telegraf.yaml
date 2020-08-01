@@ -15,13 +15,24 @@ spec:
         app: telegraf
     spec:
       containers:
-        - name: telegraf-container
-          image: telegraf-image
-          imagePullPolicy: Never
-          volumeMounts:
-            - name: docker-sock
-              mountPath: /var/run/docker.sock
+      - name: telegraf-container
+        image: telegraf-image
+        imagePullPolicy: Never
+        volumeMounts:
+        - name: telegraf-data
+          subPath: telegraf.conf
+          mountPath: /etc/telegraf/telegraf.conf
+          readOnly: true
+        - name: docker-socket
+          mountPath: /var/run/docker.sock
+        envFrom:
+        - secretRef:
+            name: telegraf-secret
       volumes:
-        - name: docker-sock
-          hostPath:
-            path: /var/run/docker.sock
+      - name: telegraf-data
+        configMap:
+          name: telegraf-config
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
+          type: Socket

@@ -1,5 +1,5 @@
-minikube start --driver=virtualbox
 #./42toolbox/init_docker
+# minikube start --driver=virtualbox
 eval $(minikube -p minikube docker-env)
 
 echo "metalLB manifest"
@@ -46,4 +46,10 @@ cd srcs/telegraf
 docker build -t telegraf-image .
 kubectl apply -f telegraf_config.yaml
 kubectl apply -f telegraf.yaml
+cd ../..
+
+cd srcs/grafana
+docker build -t grafana-image .
+kubectl apply -f grafana_config.yaml
+kubectl apply -f grafana.yaml
 cd ../..

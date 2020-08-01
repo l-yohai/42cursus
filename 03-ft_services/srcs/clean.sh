@@ -31,9 +31,17 @@ cd ..
 echo "influxdb delete"
 cd influxdb
 kubectl delete -f influxdb.yaml
+kubectl delete -f influxdb_config.yaml
 cd ..
 
 echo "telegraf delete"
 cd telegraf
 kubectl delete -f telegraf.yaml
+kubectl delete -f telegraf_config.yaml
+cd ..
+
+echo "grafana delete"
+cd grafana
+kubectl delete -f grafana.yaml
+kubectl delete -f grafana_config.yaml
 cd ..
