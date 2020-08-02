@@ -33,14 +33,15 @@
 - 철학자의 죽음으로부터 그의 죽음이 출력되기까지 10ms를 넘어서는 안된다.
 - 다시 한 번, 철학자들은 죽음을 피해야 한다.
 
-|:-:|:--:|
-|Program Name|philo_one|
-|Turn in files|philo_one/|
-|Makefile|Yes|
-|Arguments|number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [number_of_times_each_philosopher_must_eat]|
-|External functs.|memset, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_datach, pthread_join, pthread_mutex_init, pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock|
-|Libft authorized|No|
-|Description|philosopher with threads and mutex|
+|					|				|
+|:-:				|:--:			|
+|Program Name		|philo_one		|
+|Turn in files		|philo_one/		|
+|Makefile			|Yes			|
+|Arguments			|number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [number_of_times_each_philosopher_must_eat]|
+|External functs.	|memset, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_datach, pthread_join, pthread_mutex_init, pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock|
+|Libft authorized	|No|
+|Description	|philosopher with threads and mutex|
 
 이 프로그램에서 공통되지 않은 규칙은 다음과 같다.
 - 각각의 철학자 사이에 포크 하나. 즉 철학자들의 왼쪽과 오른쪽에 포크가 있어야 한다.
