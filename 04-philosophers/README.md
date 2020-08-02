@@ -40,36 +40,40 @@
 |Makefile			|Yes			|
 |Arguments			|number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [number_of_times_each_philosopher_must_eat]|
 |External functs.	|memset, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_datach, pthread_join, pthread_mutex_init, pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock|
-|Libft authorized	|No|
-|Description	|philosopher with threads and mutex|
+|Libft authorized	|No				|
+|Description		|philosopher with threads and mutex|
+|					|				|
 
 이 프로그램에서 공통되지 않은 규칙은 다음과 같다.
 - 각각의 철학자 사이에 포크 하나. 즉 철학자들의 왼쪽과 오른쪽에 포크가 있어야 한다.
 - 철학자들이 중복된 포크를 집게 하지 않으려면, 포크의 상태를 mutex로 보호해야 한다.
 - 각각의 철학자들은 쓰레드(thread)가 되어야 한다.
 
-|:-:|:--:|
-|Program Name|philo_two|
-|Turn in files|philo_two/|
-|Makefile|Yes|
-|Arguments|number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [number_of_times_each_philosopher_must_eat]|
-|External functs.|memset, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_detach, pthread_join, sem_open, sem_close, sem_post, sem_wait, sem_unlink|
-|Libft authorized|No|
-|Description|philosopher with threads and semaphore|
+|					|				|
+|:-:				|:--:			|
+|Program Name		|philo_two		|
+|Turn in files		|philo_two/		|
+|Makefile			|Yes			|
+|Arguments			|number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [number_of_times_each_philosopher_must_eat]|
+|External functs.	|memset, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_detach, pthread_join, sem_open, sem_close, sem_post, sem_wait, sem_unlink|
+|Libft authorized	|No				|
+|Description		|philosopher with threads and semaphore|
+|					|				|
 
 이 프로그램에서 공통되지 않은 규칙은 다음과 같다.
 - 모든 포크는 테이블 중앙에 있다.
 - 메모리에는 들어있지 않지만, 사용가능한 포크의 수는 semaphore로 표시된다.
 - 각각의 철학자들은 쓰레드(thread)가 되어야 한다.
 
-|:-:|:--:|
-|Program Name|philo_three|
-|Turn in files|philo_three/|
-|Makefile|Yes|
-|Arguments|number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [number_of_times_each_philosopher_must_eat]|
-|External functs.|memset, malloc, free, write, fork, kill, exit, pthread_create, pthread_detach, pthread_join, usleep, gettimeofday, waitpid, sem_open, sem_close, sem_post, sem_wait, sem_unlink|
-|Libft authorized|No|
-|Description|philosopher with processes and semaphore|
+|					|				|
+|:-:				|:--:			|
+|Program Name		|philo_three	|
+|Turn in files		|philo_three/	|
+|Makefile			|Yes			|
+|Arguments			|number_of_philosophers, time_to_die, time_to_eat, time_to_sleep, [number_of_times_each_philosopher_must_eat]|
+|External functs.	|memset, malloc, free, write, fork, kill, exit, pthread_create, pthread_detach, pthread_join, usleep, gettimeofday, waitpid, sem_open, sem_close, sem_post, sem_wait, sem_unlink|
+|Libft authorized	|No				|
+|Description		|philosopher with processes and semaphore|
 
 이 프로그램에서 공통되지 않은 규칙은 다음과 같다.
 - 모든 포크는 테이블 중앙에 있다.
