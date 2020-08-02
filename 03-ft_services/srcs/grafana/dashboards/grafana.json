@@ -1,130 +1,165 @@
 {
-  "aliasColors": {},
-  "bars": false,
-  "dashLength": 10,
-  "dashes": false,
-  "datasource": "influxdb",
-  "fieldConfig": {
-    "defaults": {
-      "custom": {}
-    },
-    "overrides": []
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
   },
-  "fill": 1,
-  "fillGradient": 0,
-  "gridPos": {
-    "h": 9,
-    "w": 12,
-    "x": 0,
-    "y": 0
-  },
-  "hiddenSeries": false,
-  "id": 2,
-  "legend": {
-    "avg": false,
-    "current": false,
-    "max": false,
-    "min": false,
-    "show": true,
-    "total": false,
-    "values": false
-  },
-  "lines": true,
-  "linewidth": 1,
-  "nullPointMode": "null",
-  "percentage": false,
-  "pluginVersion": "7.1.1",
-  "pointradius": 2,
-  "points": false,
-  "renderer": "flot",
-  "seriesOverrides": [],
-  "spaceLength": 10,
-  "stack": false,
-  "steppedLine": false,
-  "targets": [
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 4,
+  "links": [],
+  "panels": [
     {
-      "groupBy": [
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "influxdb",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
         {
-          "params": [
-            "$__interval"
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
           ],
-          "type": "time"
+          "measurement": "docker_container_net",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "tx_bytes"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "app",
+              "operator": "=",
+              "value": "grafana"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Panel Title",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
         },
         {
-          "params": [
-            "null"
-          ],
-          "type": "fill"
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
         }
       ],
-      "measurement": "docker_container_net",
-      "orderByTime": "ASC",
-      "policy": "default",
-      "refId": "A",
-      "resultFormat": "time_series",
-      "select": [
-        [
-          {
-            "params": [
-              "tx_bytes"
-            ],
-            "type": "field"
-          },
-          {
-            "params": [],
-            "type": "last"
-          }
-        ]
-      ],
-      "tags": [
-        {
-          "key": "app",
-          "operator": "=",
-          "value": "grafana"
-        }
-      ]
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
-  "thresholds": [],
-  "timeFrom": null,
-  "timeRegions": [],
-  "timeShift": null,
-  "title": "Panel Title",
-  "tooltip": {
-    "shared": true,
-    "sort": 0,
-    "value_type": "individual"
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
   },
-  "type": "graph",
-  "xaxis": {
-    "buckets": null,
-    "mode": "time",
-    "name": null,
-    "show": true,
-    "values": []
+  "time": {
+    "from": "now-6h",
+    "to": "now"
   },
-  "yaxes": [
-    {
-      "$$hashKey": "object:702",
-      "format": "short",
-      "label": null,
-      "logBase": 1,
-      "max": null,
-      "min": null,
-      "show": true
-    },
-    {
-      "$$hashKey": "object:703",
-      "format": "short",
-      "label": null,
-      "logBase": 1,
-      "max": null,
-      "min": null,
-      "show": true
-    }
-  ],
-  "yaxis": {
-    "align": false,
-    "alignLevel": null
-  }
+  "timepicker": {},
+  "timezone": "",
+  "title": "grafana",
+  "uid": "df8_1QVGz",
+  "version": 1
 }

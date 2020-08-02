@@ -73,3 +73,9 @@ spec:
             hostPort: 21103
           - containerPort: 21104
             hostPort: 21104
+        livenessProbe:
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          tcpSocket:
+            port: 21

@@ -47,6 +47,13 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 8086
+          livenessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            httpGet:
+              path: /ping
+              port: 8086
           volumeMounts:
             - name: influxdb-data
               mountPath: /var/lib/influxdb

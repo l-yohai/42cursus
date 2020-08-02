@@ -1,20 +1,40 @@
 # ft_services
 ---
 ### settings
+- 클러스터에서 42툴박스를 이용하여 도커를 goinfre로 옮기고, 용량문제로 인해, minikube 역시 goinfre로 옮겨준다.
+- virtualbox를 이용하여 minikube start
+- minikube 노드 안에서 도커 이미지를 사용하기 위하여 docker-env 명령어를 이용한다.
 ```shell
 # init docker
 ./42toolbox/init_docker.sh
-
 # start minikube
 mv .minikube goinfre/minikube
 ln -s goinfre/minikube .minikube
 minikube delete
 minikube start --driver=virtualbox
 eval $(minikube -p minikube docker-env)
-
 # start ft_services
 ./srcs/setup.sh
 ```
+---
+#### 이미지 빌드 시 ENTRYPOINT와 CMD의 차이
+https://bluese05.tistory.com/77
+
+도커파일 마지막에 ENTRYPOINT로 이미지를 빌드해놓은 경우에 pkill을 했을 때 자동으로 재시작 됨.
+
+내 파일에서 mysql <-> ftps의 차이가 여기서 나타남.
+mysqld를 kill한 경우 자동으로 재시작 되지만 vsftpd를 kill한 경우 자동으로 재시작 되지 않는다.
+* nginx는 ENTRYPOINT로 이미지를 빌드하지만 (nginx -g "daemon off";) /usr/sbin/sshd의 경우는 살짝 다름. nginx 서버를 kill하면 자동으로 재시작 되지만, sshd 서버를 kill한 경우에는 자동으로 재시작 되지 않는다.
+
+CMD를 사용한 경우에는 yaml파일에서 livenessprobe를 사용해야 헬스체크와 진단을 할 수 있다.
+
+```Shell
+kubectl exec deploy/nginx-deployment -- pkill sshd
+kubectl exec deploy/mysql-deployment -- pkill mysqld
+kubectl exec deploy/ftps-deployment -- pkill vsftpd
+kubectl exec deploy/influxdb-deployment -- pkill influxd
+```
+
 ---
 ### nginx with docker
 ```shell
@@ -45,6 +65,16 @@ cd /srcs/nginx
 docker build -t nginx-image .
 kubectl apply -f nginx.yaml
 ```
+- ssh에 접속하기
+```Shell
+ssh USER@NGINX-EXTERNAL-IP -p PORT
+본인의 경우: ssh admin@192.168.99.95 -p 22
+
+- ssh서버 다운시키기
+kubectl exec deploy/nginx-deployment -- pkill sshd
+이후 ssh admin@192.168.99.95 -p 22 로 접속을 시도해보면 `connection refused`가 나타난다.
+이 경우를 방지하기 위해 livenessprobe를 사용함.
+```
 ---
 ### ftps
 
@@ -58,12 +88,17 @@ docker build -t ftps-image .
 kubectl apply -f vsftpd.yaml
 # file upload
 curl ftp://EXTERNAL-IP:21 --ssl -k -u admin:admin -T filename
+본인의 경우: curl ftp://192.168.99.96:21 --ssl -k -u admin:admin -T filename
 # file download
 curl ftp://EXTERNAL-IP:21/filename --ssl -k -u admin:admin -o ./filename
+본인의 경우: curl ftp://192.168.99.96:21/filename --ssl -k -u admin:admin -o ./filename
 # check
 kubectl get pods
 kubectl exec -it ftps-pods-name -- sh 
 / \# cd home/vsftpd/user/
+# kill vsftpd server
+kubectl exec deploy/ftps-deployment -- pkill vsftpd
+-> `(6) Could not resolve host: EXTERNAL-IP`
 ```
 ---
 ### mysql
@@ -286,3 +321,8 @@ spec:
             - containerPort: 3000
               name: grafana-port
 ```
+이후 EXTERNAL-IP로 그라파나 대시보드에 접속한다. 초기 유저/패스워드는 admin/admin.
+
+CREATE DASHBOARD -> default database 를 influxdb 로 변경 -> 여러 세팅을 거쳐 시각화를 진행 -> json파일로 다운로드
+
+이후 이미지를 빌드할 때 json파일들을 /var/lib/grafana/dashboards 경로로 옮겨주면 만들어낸 대시보드를 불러올 수 있다.
