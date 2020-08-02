@@ -21,7 +21,7 @@
 |		|[libasm](./03-libasm)					|C, Assembly		|2020.07.09 ~ 2020.07.12	|100% :heavy_check_mark:	|level 3 - 30%	|
 |		|[minishell](./03-minishell)			|C					|2020.07.15 ~ 2020.07.21	|100% :heavy_check_mark:	|level 3 - 92%	|
 |		|[ft_services](./03-ft_services)		|Docker, Kubernetes	|2020.07.22 ~ 2020.08.03	|							|				|
-|:dizzy:|										|					|							|							|				|
+|:dizzy:|										|					|**= 4 weeks**				|							|				|
 |04		|[Philosophers](./04-philosophers)		|C					|2020.08.03 ~				|							|				|
 |		|[CPP Modules 00](./04-cpp_modules/00)	|C++				|							|							|				|
 |		|[CPP Modules 01](./04-cpp_modules/01)	|C++				|							|							|				|
