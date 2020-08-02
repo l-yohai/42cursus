@@ -28,23 +28,25 @@
 - 철학자가 죽으면 시뮬레이션이 멈춥니다.
 
 - 모든 프로그램은 아래와 같은 옵션을 가져야 합니다.
-- - `number_of_philosophers`: 철학자들의 인원수이자 포크의 개수
-- - `time_to_die`: 밀리초(milisecond)단위로 철학자가 마지막 식사를 시작한 이후 혹은 시뮬레이션이 시작한 이후에 time_to_die 밀리초에 식사를 시작하지 않는다면 죽을 것이다.
-- - `time_to_eat`: 밀리초 단위이자 철학자가 먹는데 필요한 시간이다. 이 시간동안 철학자는 두 개의 포크를 가지고 있어야 할 것이다.
-- - `time_to_sleep`: 밀리초 단위이자 철학자가 자는데 소비하는 시간이다.
-- - `number_of_times_each_philosopher_must_eat`: 이 옵션은 선택적인 것으로, 만약 모든 철학자들이 최소 `number_of_times_each_philosopher_must_eat`동안 먹는다면 시뮬레이션은 종료될 것이다. 만약 정해지지 않았으면 시뮬레이션은 오직 철학자가 죽어야만 중단될 것이다.
-
+```
+`number_of_philosophers`: 철학자들의 인원수이자 포크의 개수
+`time_to_die`: 밀리초(milisecond)단위로 철학자가 마지막 식사를 시작한 이후 혹은 시뮬레이션이 시작한 이후에 time_to_die 밀리초에 식사를 시작하지 않는다면 죽을 것이다.
+`time_to_eat`: 밀리초 단위이자 철학자가 먹는데 필요한 시간이다. 이 시간동안 철학자는 두 개의 포크를 가지고 있어야 할 것이다.
+`time_to_sleep`: 밀리초 단위이자 철학자가 자는데 소비하는 시간이다.
+`number_of_times_each_philosopher_must_eat`: 이 옵션은 선택적인 것으로, 만약 모든 철학자들이 최소 `number_of_times_each_philosopher_must_eat`동안 먹는다면 시뮬레이션은 종료될 것이다. 만약 정해지지 않았으면 시뮬레이션은 오직 철학자가 죽어야만 중단될 것이다.
+```
 - 각각의 철학자들은 1에서 number_of_philosophers까지의 숫자를 부여받는다.
 
 - 철학자 번호 1은 철학자 번호가 number_of_philosophers인 철학자 옆에 있다. 1과 number_of_philosophers를 제외한 다른 숫자 n을 가진 철학자는 철학자 n-1번과 철학자 n+1번 사이에 앉는다.
 
 - 철학자의 지위 변화는 다음을 따라야만 한다. (X는 `철학자번호`와 `timestamp_in_ms-밀리초에서 현재 timestamp`로 대체된다.)
-- - timestamp_in_ms X has taken a fork.
-- - timestamp_in_ms X is eating.
-- - timestamp_in_ms X is sleeping.
-- - timestamp_in_ms X is thinking.
-- - timestamp_in_ms X died.
-
+```
+timestamp_in_ms X has taken a fork.
+timestamp_in_ms X is eating.
+timestamp_in_ms X is sleeping.
+timestamp_in_ms X is thinking.
+timestamp_in_ms X died.
+```
 - 출력된 철학자의 지위는 다른 철학자가 뺏거나 다른 철학자의 지위와 중복될 수 없다.
 
 - 철학자의 죽음으로부터 그의 죽음이 출력되기까지 10ms를 넘어서는 안된다.
