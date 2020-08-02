@@ -1,4 +1,3 @@
-#./42toolbox/init_docker
 minikube start --driver=virtualbox
 eval $(minikube -p minikube docker-env)
 

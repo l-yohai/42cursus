@@ -73,7 +73,8 @@ ssh USER@NGINX-EXTERNAL-IP -p PORT
 - ssh서버 다운시키기
 kubectl exec deploy/nginx-deployment -- pkill sshd
 이후 ssh admin@192.168.99.95 -p 22 로 접속을 시도해보면 `connection refused`가 나타난다.
-이 경우를 방지하기 위해 livenessprobe를 사용함.
+이 경우를 방지하기 위해 livenessprobe를 사용함. 잠시 기다렸다가 다시 접속해보자.
+* 경고가 나타난다면 vi ~/.ssh/known-hosts 에서 192.168.99.95에서 접속할 때 사용했던 rsa key를 지워주자.
 ```
 ---
 ### ftps

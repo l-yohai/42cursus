@@ -6,8 +6,10 @@ RUN apk add nginx
 RUN apk add openssh
 RUN apk add openssl
 
-COPY ./default.conf /etc/nginx/conf.d/
-COPY ./entrypoint.sh /tmp/
+COPY default.conf /etc/nginx/conf.d/
+COPY entrypoint.sh /tmp/
+COPY nginx.crt /etc/nginx/ssl/
+COPY nginx.key /etc/nginx/ssl/
 
 EXPOSE 80 443 22
 
