@@ -42,5 +42,3 @@
 |06		|Exam Rank 06													|					|							|							|				|
 |		|ft_transcendence												|					|							|							|				|
 |:dizzy:|																|					|							|							|				|
-=======
-
