@@ -2,8 +2,6 @@
 
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/42_Logo.svg" alt="42 Logo.svg" width="142"></p> 
 
-<p><img src="https://user-images.githubusercontent.com/49181231/89183051-a0bf6380-d5d1-11ea-8955-10a02d9c6023.png" alt="42 skills"></p>
-
 ### Common Circle (42cursus curriculum)
 
 |CIRCLE	|PROJECT													|LANGUAGE			|DURATION					|RESULT						|LEVEL			|
