@@ -10,7 +10,7 @@
 |00		|[Libft](https://github.com/l-yohai/libft)						|C					|2020.02.24 ~ 2020.03.01	|115% :heavy_check_mark:	|level 1 - 03%	|
 |:dizzy:|																|					|**= 1 week**				|							|				|
 |01		|[get_next_line](https://github.com/l-yohai/get_next_line)		|C					|2020.03.02 ~ 2020.03.08	|107% :heavy_check_mark:	|level 1 - 45%	|
-|		|[netwhat](./)													|N/A				|2020.04.19 ~ 2020.04.21	|100% :heavy_check_mark:	|level 1 - 66%	|
+|		|[netwhat]														|N/A				|2020.04.19 ~ 2020.04.21	|100% :heavy_check_mark:	|level 1 - 66%	|
 |		|[ft_printf](https://github.com/l-yohai/ft_printf)				|C					|2020.03.09 ~ 2020.05.09	|100% :heavy_check_mark:	|level 2 - 02%	|
 |:dizzy:|																|					|**= 2 months**				|							|				|
 |02		|[ft_server](https://github.com/l-yohai/ft_server)				|Docker				|2020.05.09 ~ 2020.05.22	|100% :heavy_check_mark:	|level 2 - 30%	|
