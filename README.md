@@ -22,9 +22,9 @@
 |		|[minishell](https://github.com/l-yohai/minishell)			|C					|2020.07.15 ~ 2020.07.21	|100% :heavy_check_mark:	|level 3 - 92%	|
 |		|[ft_services](https://github.com/l-yohai/ft_services)		|Docker, Kubernetes	|2020.07.22 ~ 2020.08.03	|100% :heavy_check_mark:	|level 4 - 05%	|
 |:dizzy:|															|					|**= 4 weeks**				|							|				|
-|04		|[Philosophers](https://github.com/l-yohai/philosophers)	|C					|2020.08.03 ~				|							|				|
+|04		|Exam Rank 04												|C					|2020.08.14					|0%							|				|
+|		|[Philosophers](https://github.com/l-yohai/philosophers)	|C					|2020.08.03 ~				|							|				|
 |		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|							|							|				|
-|		|Exam Rank 04												|					|							|							|				|
 |:dizzy:|															|					|							|							|				|
 |05		|Exam Rank 05												|					|							|							|				|
 |		|[ft_containers](https://github.com/l-yohai/ft_containers)												|					|							|							|				|
