@@ -23,13 +23,12 @@
 |		|[ft_services](https://github.com/l-yohai/ft_services)		|Docker, Kubernetes	|2020.07.22 ~ 2020.08.03	|100% :heavy_check_mark:	|level 4 - 05%	|
 |:dizzy:|															|					|**= 4 weeks**				|							|				|
 |04		|[Philosophers](https://github.com/l-yohai/philosophers)	|C					|2020.08.03 ~ 2020.08.20	|100% :heavy_check_mark:	|level 4 - 32%	|
-|		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|C++ Module 03				|100%						|				|
-|		|Exam Rank 04												|C					|2020.08.14					|0%							|				|
-|:dizzy:|															|					|							|							|				|
-|05		|Exam Rank 05												|					|							|							|				|
+|		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|2020.08.20 ~ 2020.10.03	|100% :heavy_check_mark:	|level 5 - 5%	|
+|		|Exam Rank 04												|C					|2020.08.14					|0%							|level 5 - 5%	|
+|:dizzy:|															|					|**= 2 months**				|							|				|
+|05		|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~				|							|				|
+|		|Exam Rank 05												|					|							|							|				|
 |		|[ft_containers](https://github.com/l-yohai/ft_containers)	|					|							|							|				|
-|		|[webserv](https://github.com/l-yohai/webserv)				| 					|							|							|				|
-|		|ft_irc														|					|							|							|				|
 |:dizzy:|															|					|							|							|				|
 |06		|Exam Rank 06												|					|							|							|				|
 |		|ft_transcendence											|					|							|							|				|
