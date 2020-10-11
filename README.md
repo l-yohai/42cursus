@@ -24,7 +24,7 @@
 |:dizzy:|															|					|**= 4 weeks**				|							|				|
 |04		|[Philosophers](https://github.com/l-yohai/philosophers)	|C					|2020.08.03 ~ 2020.08.20	|100% :heavy_check_mark:	|level 4 - 32%	|
 |		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|2020.08.20 ~ 2020.10.03	|100% :heavy_check_mark:	|level 5 - 5%	|
-|		|Exam Rank 04												|C					|2020.08.14					|0%							|level 5 - 5%	|
+|		|Exam Rank 04												|C					|2020.10.06					|100% :heavy_check_mark:	|level 5 - 5%	|
 |:dizzy:|															|					|**= 2 months**				|							|				|
 |05		|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~				|							|				|
 |		|Exam Rank 05												|					|							|							|				|
