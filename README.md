@@ -26,7 +26,7 @@
 |		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|2020.08.20 ~ 2020.10.03	|100% :heavy_check_mark:	|level 5 - 5%	|
 |		|Exam Rank 04												|C					|2020.10.06					|100% :heavy_check_mark:	|level 5 - 5%	|
 |:dizzy:|															|					|**= 2 months**				|							|				|
-|05		|Exam Rank 05												|C++				|2020.10.23					|100%							|level 5 - 5%	|
+|05		|Exam Rank 05												|C++				|2020.10.23					|100% :heavy_check_mark:	|level 5 - 5%	|
 |		|[ft_containers](https://github.com/l-yohai/ft_containers)	|C++				|2020.10.13 ~	2020.12.03	|100% :heavy_check_mark:	|level 5 - 31%	|
 |		|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~				|							|				|
 |:dizzy:|															|					|							|							|				|
