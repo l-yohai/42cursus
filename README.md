@@ -31,6 +31,6 @@
 |		|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~				|							|				|
 |:dizzy:|															|					|							|							|				|
 |06		|Exam Rank 06												|C					|							|							|				|
-|		|ft_transcendence											|Ruby					|             |2020.12.05 ~				|				|
+|		|ft_transcendence											|Ruby					|2020.12.05 ~				|             |				|
 |:dizzy:|															|					|							|							|				|
 
