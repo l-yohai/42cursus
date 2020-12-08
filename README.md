@@ -30,7 +30,7 @@
 |		|[ft_containers](https://github.com/l-yohai/ft_containers)	|C++				|2020.10.13 ~	2020.12.03	|100% :heavy_check_mark:	|level 5 - 31%	|
 |		|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~				|							|				|
 |:dizzy:|															|					|							|							|				|
-|06		|Exam Rank 06												|					|							|							|				|
+|06		|Exam Rank 06												|C					|							|							|				|
 |		|ft_transcendence											|Ruby					|             |2020.12.05 ~				|				|
 |:dizzy:|															|					|							|							|				|
 
