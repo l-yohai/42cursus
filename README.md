@@ -33,7 +33,7 @@
 |		|[ft_services](https://github.com/l-yohai/ft_services)		|Docker, Kubernetes	|2020.07.22 ~ 2020.08.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_services)](https://github.com/JaeSeoKim/badge42)
 |level 4 - 05%	|
 |:dizzy:|															|					|**= 4 weeks**				|							|				|
-|04		|[Philosophers](https://github.com/l-yohai/philosophers)	|C					|2020.08.03 ~ 2020.08.20	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/philosophers)](https://github.com/JaeSeoKim/badge42)
+|04		|[Philosophers](https://github.com/l-yohai/philosophers)	|C					|2020.08.03 ~ 2020.08.20	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Philosophers)](https://github.com/JaeSeoKim/badge42)
 |level 4 - 32%	|
 |		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|2020.08.20 ~ 2020.10.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/cpp-module-08)](https://github.com/JaeSeoKim/badge42)
 |level 5 - 5%	|
