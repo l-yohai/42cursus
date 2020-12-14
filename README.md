@@ -21,19 +21,29 @@
 |level 2 - 30%	|
 |		|Exam Rank 02												|C					|2020.05.26					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/exam-rank-02)](https://github.com/JaeSeoKim/badge42)
 |level 2 - 30%	|
-|		|[cub3d](https://github.com/l-yohai/cub3d)					|C					|2020.05.23 ~ 2020.07.08	|101% :heavy_check_mark:	|level 3 - 09%	|
+|		|[cub3d](https://github.com/l-yohai/cub3d)					|C					|2020.05.23 ~ 2020.07.08	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/cub3d)](https://github.com/JaeSeoKim/badge42)
+|level 3 - 09%	|
 |:dizzy:|															|					|**= 2 months**				|							|				|
-|03		|Exam Rank 03												|C					|2020.07.10					|100% :heavy_check_mark:	|level 3 - 09%	|
-|		|[libasm](https://github.com/l-yohai/libasm)				|C, Assembly		|2020.07.09 ~ 2020.07.12	|100% :heavy_check_mark:	|level 3 - 30%	|
-|		|[minishell](https://github.com/l-yohai/minishell)			|C					|2020.07.15 ~ 2020.07.21	|100% :heavy_check_mark:	|level 3 - 92%	|
-|		|[ft_services](https://github.com/l-yohai/ft_services)		|Docker, Kubernetes	|2020.07.22 ~ 2020.08.03	|100% :heavy_check_mark:	|level 4 - 05%	|
+|03		|Exam Rank 03												|C					|2020.07.10					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/exam-rank-03)](https://github.com/JaeSeoKim/badge42)
+|level 3 - 09%	|
+|		|[libasm](https://github.com/l-yohai/libasm)				|C, Assembly		|2020.07.09 ~ 2020.07.12	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/libasm)](https://github.com/JaeSeoKim/badge42)
+|level 3 - 30%	|
+|		|[minishell](https://github.com/l-yohai/minishell)			|C					|2020.07.15 ~ 2020.07.21	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/minishell)](https://github.com/JaeSeoKim/badge42)
+|level 3 - 92%	|
+|		|[ft_services](https://github.com/l-yohai/ft_services)		|Docker, Kubernetes	|2020.07.22 ~ 2020.08.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_services)](https://github.com/JaeSeoKim/badge42)
+|level 4 - 05%	|
 |:dizzy:|															|					|**= 4 weeks**				|							|				|
-|04		|[Philosophers](https://github.com/l-yohai/philosophers)	|C					|2020.08.03 ~ 2020.08.20	|100% :heavy_check_mark:	|level 4 - 32%	|
-|		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|2020.08.20 ~ 2020.10.03	|100% :heavy_check_mark:	|level 5 - 5%	|
-|		|Exam Rank 04												|C					|2020.10.06					|100% :heavy_check_mark:	|level 5 - 5%	|
+|04		|[Philosophers](https://github.com/l-yohai/philosophers)	|C					|2020.08.03 ~ 2020.08.20	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/philosophers)](https://github.com/JaeSeoKim/badge42)
+|level 4 - 32%	|
+|		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|2020.08.20 ~ 2020.10.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/cpp-module-08)](https://github.com/JaeSeoKim/badge42)
+|level 5 - 5%	|
+|		|Exam Rank 04												|C					|2020.10.06					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/exam-rank-04)](https://github.com/JaeSeoKim/badge42)
+|level 5 - 5%	|
 |:dizzy:|															|					|**= 2 months**				|							|				|
-|05		|Exam Rank 05												|C++				|2020.10.23					|100% :heavy_check_mark:	|level 5 - 5%	|
-|		|[ft_containers](https://github.com/l-yohai/ft_containers)	|C++				|2020.10.13 ~	2020.12.03	|100% :heavy_check_mark:	|level 5 - 31%	|
+|05		|Exam Rank 05												|C++				|2020.10.23					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/exam-rank-05)](https://github.com/JaeSeoKim/badge42)
+|level 5 - 5%	|
+|		|[ft_containers](https://github.com/l-yohai/ft_containers)	|C++				|2020.10.13 ~	2020.12.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_containers)](https://github.com/JaeSeoKim/badge42)
+|level 5 - 31%	|
 |		|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~				|							|				|
 |:dizzy:|															|					|							|							|				|
 |06		|Exam Rank 06												|C					|							|							|				|
