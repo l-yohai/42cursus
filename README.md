@@ -37,7 +37,7 @@
 |level 4 - 32%	|
 |		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|2020.08.20 ~ 2020.10.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/CPP-Module-08)](https://github.com/JaeSeoKim/badge42)
 |level 5 - 5%	|
-|		|Exam Rank 04												|C					|2020.10.06					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/exam_rank_04)](https://github.com/JaeSeoKim/badge42)
+|		|Exam Rank 04												|C					|2020.10.06					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam_Rank_04)](https://github.com/JaeSeoKim/badge42)
 |level 5 - 5%	|
 |:dizzy:|															|					|**= 2 months**				|							|				|
 |05		|Exam Rank 05												|C++				|2020.10.23					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam-Rank-05)](https://github.com/JaeSeoKim/badge42)
