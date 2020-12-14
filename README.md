@@ -18,9 +18,9 @@
 |		|[minishell](https://github.com/l-yohai/minishell)			|C					|2020.07.15 ~ 2020.07.21	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/minishell)](https://github.com/JaeSeoKim/badge42)			|*3 - 92%*	|
 |		|[ft_services](https://github.com/l-yohai/ft_services)		|Docker, Kubernetes	|2020.07.22 ~ 2020.08.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_services)](https://github.com/JaeSeoKim/badge42)			|*4 - 05%*	|
 |04		|[Philosophers](https://github.com/l-yohai/philosophers)	|C					|2020.08.03 ~ 2020.08.20	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Philosophers)](https://github.com/JaeSeoKim/badge42)		|*4 - 32%*	|
-|		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|2020.08.20 ~ 2020.10.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/CPP%20Module%2008)](https://github.com/JaeSeoKim/badge42)	|*5 - 5%*	|
-|		|Exam Rank 04												|C					|2020.10.06					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2004)](https://github.com/JaeSeoKim/badge42)	|*5 - 5%*	|
-|05		|Exam Rank 05												|C++				|2020.10.23					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2005)](https://github.com/JaeSeoKim/badge42)	|*5 - 5%*	|
+|		|[CPP_Modules](https://github.com/l-yohai/CPP_Modules)		|C++				|2020.08.20 ~ 2020.10.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/CPP%20Module%2008)](https://github.com/JaeSeoKim/badge42)	|*5 - 05%*	|
+|		|Exam Rank 04												|C					|2020.10.06					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2004)](https://github.com/JaeSeoKim/badge42)	|*5 - 05%*	|
+|05		|Exam Rank 05												|C++				|2020.10.23					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2005)](https://github.com/JaeSeoKim/badge42)	|*5 - 05%*	|
 |		|[ft_containers](https://github.com/l-yohai/ft_containers)	|C++				|2020.10.13 ~	2020.12.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_containers)](https://github.com/JaeSeoKim/badge42)		|*5 - 31%*	|
 |		|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~	2020.12.11	|							|				|
 |06		|Exam Rank 06												|C					|							|							|				|
