@@ -40,7 +40,7 @@
 |		|Exam Rank 04												|C					|2020.10.06					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam_Rank_04)](https://github.com/JaeSeoKim/badge42)
 |level 5 - 5%	|
 |:dizzy:|															|					|**= 2 months**				|							|				|
-|05		|Exam Rank 05												|C++				|2020.10.23					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam-Rank-05)](https://github.com/JaeSeoKim/badge42)
+|05		|Exam Rank 05												|C++				|2020.10.23					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2005)](https://github.com/JaeSeoKim/badge42)
 |level 5 - 5%	|
 |		|[ft_containers](https://github.com/l-yohai/ft_containers)	|C++				|2020.10.13 ~	2020.12.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_containers)](https://github.com/JaeSeoKim/badge42)
 |level 5 - 31%	|
