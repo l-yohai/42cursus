@@ -10,12 +10,17 @@
 |00		|[Libft](https://github.com/l-yohai/libft)					|C					|2020.02.24 ~ 2020.03.01	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Libft)](https://github.com/JaeSeoKim/badge42)
 |level 1 - 03%	|
 |:dizzy:|															|					|**= 1 week**				|							|				|
-|01		|[get_next_line](https://github.com/l-yohai/get_next_line)	|C					|2020.03.02 ~ 2020.03.08	|107% :heavy_check_mark:	|level 1 - 45%	|
-|		|netwhat													|N/A				|2020.04.19 ~ 2020.04.21	|100% :heavy_check_mark:	|level 1 - 66%	|
-|		|[ft_printf](https://github.com/l-yohai/ft_printf)			|C					|2020.03.09 ~ 2020.05.09	|100% :heavy_check_mark:	|level 2 - 02%	|
+|01		|[get_next_line](https://github.com/l-yohai/get_next_line)	|C					|2020.03.02 ~ 2020.03.08	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/get_next_line)](https://github.com/JaeSeoKim/badge42)
+|level 1 - 45%	|
+|		|netwhat													|N/A				|2020.04.19 ~ 2020.04.21	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/netwhat)](https://github.com/JaeSeoKim/badge42)
+|level 1 - 66%	|
+|		|[ft_printf](https://github.com/l-yohai/ft_printf)			|C					|2020.03.09 ~ 2020.05.09	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_printf)](https://github.com/JaeSeoKim/badge42)
+|level 2 - 02%	|
 |:dizzy:|															|					|**= 2 months**				|							|				|
-|02		|[ft_server](https://github.com/l-yohai/ft_server)			|Docker				|2020.05.09 ~ 2020.05.22	|100% :heavy_check_mark:	|level 2 - 30%	|
-|		|Exam Rank 02												|C					|2020.05.26					|100% :heavy_check_mark:	|level 2 - 30%	|
+|02		|[ft_server](https://github.com/l-yohai/ft_server)			|Docker				|2020.05.09 ~ 2020.05.22	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_server)](https://github.com/JaeSeoKim/badge42)
+|level 2 - 30%	|
+|		|Exam Rank 02												|C					|2020.05.26					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/exam_rank_02)](https://github.com/JaeSeoKim/badge42)
+|level 2 - 30%	|
 |		|[cub3d](https://github.com/l-yohai/cub3d)					|C					|2020.05.23 ~ 2020.07.08	|101% :heavy_check_mark:	|level 3 - 09%	|
 |:dizzy:|															|					|**= 2 months**				|							|				|
 |03		|Exam Rank 03												|C					|2020.07.10					|100% :heavy_check_mark:	|level 3 - 09%	|
