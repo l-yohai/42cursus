@@ -22,6 +22,6 @@
 |		|Exam Rank 04												|C					|2020.10.06					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2004)](https://github.com/JaeSeoKim/badge42)	|*5 - 05%*	|
 |05		|Exam Rank 05												|C++				|2020.10.23					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2005)](https://github.com/JaeSeoKim/badge42)	|*5 - 05%*	|
 |		|[ft_containers](https://github.com/l-yohai/ft_containers)	|C++				|2020.10.13 ~	2020.12.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_containers)](https://github.com/JaeSeoKim/badge42)		|*5 - 31%*	|
-|		|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~	2020.12.11	|							|				|
+|		|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~	2020.12.11	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/webserv)](https://github.com/JaeSeoKim/badge42) 	|*6 - 49%*	|
 |06		|Exam Rank 06												|C					|							|							|				|
 |		|ft_transcendence											|Ruby				|2020.12.05 ~				|							|				|
