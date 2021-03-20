@@ -25,4 +25,4 @@
 |				|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~	2020.12.11	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/webserv)](https://github.com/JaeSeoKim/badge42) 	|*6 - 49%*	|
 |06			|ft_transcendence										|Ruby				|2020.12.05 ~	2021.03.16	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_transcendence)](https://github.com/JaeSeoKim/badge42)							|*9 - 19%*		|
 |				|Exam Rank 06												|C					|2020.03.19							|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2006)](https://github.com/JaeSeoKim/badge42)			|*9 - 19%*		|
-|Outer Circle	- AI	|ft_linear_regression												|Python					|2020.03.20	~						|			|		|
+|Outer - AI	|ft_linear_regression												|Python					|2020.03.20	~						|			|		|
