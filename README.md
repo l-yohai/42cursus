@@ -30,4 +30,4 @@
 
 |CIRCLE	|PROJECT													|LANGUAGE			|DURATION					|RESULT																																		|LEVEL		|
 |:--:		|:--:															|:-:				|:--:						|:--:																																		|:--:		|
-|AI	|ft_linear_regression												|Python					|2020.03.20	~						|			|		|
+|AI	|ft_linear_regression												|Python					|2020.03.20	~	2020.03.22					|			|		|
