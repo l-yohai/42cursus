@@ -23,8 +23,8 @@
 |05			|Exam Rank 05												|C++				|2020.10.23					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2005)](https://github.com/JaeSeoKim/badge42)	|*5 - 05%*	|
 |				|[ft_containers](https://github.com/l-yohai/ft_containers)	|C++				|2020.10.13 ~	2020.12.03	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_containers)](https://github.com/JaeSeoKim/badge42)		|*5 - 31%*	|
 |				|[webserv](https://github.com/l-yohai/webserv)				|C++				|2020.10.03 ~	2020.12.11	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/webserv)](https://github.com/JaeSeoKim/badge42) 	|*6 - 49%*	|
-|06			|ft_transcendence										|Ruby				|2020.12.05 ~	2021.03.16	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_transcendence)](https://github.com/JaeSeoKim/badge42)							|*9 - 19%*		|
-|				|Exam Rank 06												|C					|2020.03.19							|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2006)](https://github.com/JaeSeoKim/badge42)			|*9 - 19%*		|
+|06			|ft_transcendence										|Ruby				|2020.12.05 ~	2021.03.16	|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_transcendence)](https://github.com/JaeSeoKim/badge42)							|*9 - 25%*		|
+|				|Exam Rank 06												|C					|2020.03.19							|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/Exam%20Rank%2006)](https://github.com/JaeSeoKim/badge42)			|*9 - 25%*		|
 
 ### Outer Circle (42cursus curriculum)
 
