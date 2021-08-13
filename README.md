@@ -30,4 +30,4 @@
 
 |CIRCLE	|PROJECT													|LANGUAGE			|DURATION					|RESULT																																		|LEVEL		|
 |:--:		|:--:															|:-:				|:--:						|:--:																																		|:--:		|
-|AI	|ft_linear_regression												|Python					|2020.03.20	~	2020.03.22					|			|		|
+|AI	|ft_linear_regression												|Python					|2020.03.20	~	2020.03.22					|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/yohlee/ft_linear_regression)](https://github.com/JaeSeoKim/badge42)			|*10 - 5%*		|
